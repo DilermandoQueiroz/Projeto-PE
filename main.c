@@ -6,11 +6,12 @@ int main(){
 
     //vetor com id de todos os livros e o contador com quantos livros tem:
     //livros[pos][0] = ID
-    //livros[pos][1] = qtd de vezes alugado 
+    //livros[pos][1] = qtd alugado 
     //livros[pos][2] = qtd em estoque
     //livros[pos][3] = nota de 0-100
     //livros[pos][4] = qtd avaliacao
-    int livros[100][5], contador_livros = 0;
+    //livros[pos][5] = qtd comprado
+    int livros[100][6], contador_livros = 0;
 
     //nome_livros[pos] onde cada pos armazena uma string de tamanho 20
     char nome_livros[100][20];
