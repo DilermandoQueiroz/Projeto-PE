@@ -3,9 +3,9 @@
 /*
 Funcao para adicionar ou remover um livro pelo seu ID
 */
-int adicionar_remover(int livros[100][5], char nome_livros[][20], int contador)
+int adicionar_remover(int livros[100][6], char nome_livros[][20], int contador)
 {
-    int aux = 0, flag = 1;
+    int aux = 0, flag = 1, colunas = 6;
 
     while(flag != 2){
         printf("Voce deseja:\n1->Adicionar um livro\n2->Remover um livro\n");
@@ -32,10 +32,15 @@ int adicionar_remover(int livros[100][5], char nome_livros[][20], int contador)
             }
             //se o livro nao estiver cadastrado, cadastra ele
             else if(flag != 0){
+                //insere o id do livro 
                 livros[contador][0] = id;
-                livros[contador][1] = 0;
-                livros[contador][2] = 0;
-                livros[contador][3] = 0;
+
+                //inicializa como 0 as outras colunas
+                for(int k=1; k<colunas; k++){
+                    livros[contador][k] = 0;
+                }
+
+                //insero o nome do livro
                 for(int n=0; n<=strlen(nome); n++){
                     nome_livros[contador][n] = nome[n];
                 }
@@ -59,12 +64,13 @@ int adicionar_remover(int livros[100][5], char nome_livros[][20], int contador)
                 if(livros[i][0] == id){
                     flag2 = 1;
                     aux = i;
+
+                    //desloca uma possicao para a esquerda a partir da que foi removida
                     for(aux; aux<contador; aux++){
-                        livros[aux][0] = livros[aux+1][0];
-                        livros[aux][1] = livros[aux+1][1];
-                        livros[aux][2] = livros[aux+1][2];
-                        livros[aux][3] = livros[aux+1][3];
-                        livros[aux][4] = livros[aux+1][4];
+                        //realiza para cada coluna do livros
+                        for(int k=0; k<colunas; k++){
+                            livros[aux][k] = livros[aux+1][k];
+                        }
                     }
                     contador--;
                     printf("Removido com sucesso!\n");
