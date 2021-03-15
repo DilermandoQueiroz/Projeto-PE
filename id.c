@@ -8,6 +8,7 @@ int id_nome(char nome[100]){
     int id = 0;
 
     for(int i=0; nome[i]!='\0'; i++){
+        nome[i] = converte_maiuscula(nome[i]);
         id += nome[i];
     }
     

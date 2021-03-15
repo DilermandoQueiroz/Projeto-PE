@@ -15,5 +15,6 @@ int AlugarComprar(int livros[100][6], int contador);
 int Devolver(int livros[100][6], int contador);
 void troca(char p1[100][20], int palavra);
 void ordenar_livros(int livros[100][6], char nome_livros[100][20],int qtde);
+char converte_maiuscula(char letra);
 
 #endif // BIBLIOTECA_H
