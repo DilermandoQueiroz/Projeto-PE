@@ -31,10 +31,9 @@ char converte_maiuscula(char letra){ // converte uma letra maiuscula em minuscul
 
     while(count!=qtde-1) //o count é quantidade de vezes que um dupla de palavras está na ordem certa, em um vetor de comprimento "qtde" a quatidade de duplas é "qtde-1"
     {
-        
         count=0;
 
-        for (int x = 0; x < qtde-1; x++) // percorrer o vetor
+        for (int x = 0; x < qtde-1; x++) //como é verificado n e n+1, é necessário -1 para não comparar com um valor não determinado
         {
             int comp;
             if(strlen(ordenado[x])<strlen(ordenado[x+1])) { // achar o menor comprimento
