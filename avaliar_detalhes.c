@@ -2,11 +2,11 @@
 
 /*Avalia um livro
 */
-void avaliar(int livros[100][5]){
+int avaliar(int livros[100][6], int contador){
 
-    char nome[50];
-
+    char nome[20];
     printf("Por favor, entre com o nome do livro que deseja avaliar:\n");
+    fflush(stdin);
     gets(nome);
 
     int id = id_nome(nome);
@@ -14,6 +14,7 @@ void avaliar(int livros[100][5]){
     int cont = 0;
     int nota = 0;
 
+    // Encontrar o livro na lista
     while(aux == 0){
 
         if(id == livros[cont][0]){
@@ -22,6 +23,8 @@ void avaliar(int livros[100][5]){
 
                 printf("\nEntre com a sua avaliacao(0-100):\n");
                 scanf("%i", &nota);
+
+                // Verificar se a nota inserida está no intervalo indicado
                 if(nota<0 || nota>100){
 
                     printf("Nota invalida!\n");
@@ -33,6 +36,9 @@ void avaliar(int livros[100][5]){
             }
 
             printf("Obrigado!\n");
+
+            // Atualizar a média do livro
+
             int n = livros[cont][4];
             int media = livros[cont][3];
 
@@ -40,17 +46,21 @@ void avaliar(int livros[100][5]){
 
             livros[cont][4] = n+1;
             livros[cont][3] = media;
-        }
-        cont = cont+1;
 
-        if(cont==99){
+        }
+
+        // Se o nome do livro ja foi comparado com todos os nomes do vetor, este ainda nao foi cadastrado
+        if(cont == contador+1){
             printf("Este livro ainda nao foi cadastrado.\n");
             aux = 1;
         }
+        cont = cont+1;
     }
+
+    return livros; // Retorna a matriz livros atualizada
 }
 
-void detalhes(int livros[100][5]){
+void detalhes(int livros[100][6], int contador){
     char nome[50];
 
     fflush(stdin);
@@ -61,13 +71,14 @@ void detalhes(int livros[100][5]){
     int aux = 0;
     int cont = 0;
 
+    // Encontrar o livro na lista de livros cadastrados
     while(aux == 0){
         if(id == livros[cont][0]){
             aux = 1;
             printf("\nO livro '%s' foi alugado %i vezes, avaliado por %i pessoas e possui media %i.\n", nome, livros[cont][1], livros[cont][4], livros[cont][3]);
             printf("Existem %i copias em nosso estoque.\n\n", livros[cont][2]);
         }
-        if(cont == 99){
+        if(cont == contador+1){
             printf("Este livro ainda nao foi cadastrado.\n\n");
             aux = 1;
         }
@@ -82,11 +93,12 @@ void detalhes(int livros[100][5]){
         scanf("%i", &a);
 
         if(a == 1){
-            detalhes(livros);
+            detalhes(livros,contador);
             aux = 1;
         }
         else if(a == 2){
             aux = 1;
+            printf("\nAte logo!\n");
         }
         else{
             printf("Essa entrada nao eh valida\n\n");

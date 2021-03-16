@@ -1,9 +1,9 @@
-#include <stdio.h>
+#include "biblioteca.h"
 
 void catalogo(int livros[100][5], char nome_livros[100][20]){
     int interesse=0;
     printf("----------------------------------------\n");
-    printf("Catálogo Biblioteca UFABC: \n");
+    printf("Catï¿½logo Biblioteca UFABC: \n");
     //chamar metodo de ordem alfabetica
     printf("----------------------------------------\n");
 

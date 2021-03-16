@@ -1,11 +1,11 @@
-#include<stdio.h>
+#include "biblioteca.h"
 
 void estoque(int livros[100][5], char nome_livros[100][20],int qtde){
     int escolha = 0, i;
     char nome[20];
 
     do{
-        printf("O que voce deseja?\nDigite 1 - Ver o estoque de um livro específico\nDigite 2 - Ver o estoque geral\nDigite 3 - Sair\n");
+        printf("O que voce deseja?\nDigite 1 - Ver o estoque de um livro especï¿½fico\nDigite 2 - Ver o estoque geral\nDigite 3 - Sair\n");
         scanf("%i", &escolha);
 
         if(escolha == 1){
