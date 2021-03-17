@@ -3,36 +3,37 @@
 /*
 Funcao para adicionar ou remover um livro pelo seu ID
 */
-int adicionar_remover(int livros[100][6], char nome_livros[][20], int contador)
+
+int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contador)
 {
     int aux = 0, flag = 1, colunas = 6;
 
     while(flag != 2){
-        printf("Voce deseja:\n1->Adicionar um livro\n2->Remover um livro\n");
+        printf("\n Voce deseja: \n 1->Adicionar um livro \n 2->Remover um livro\n");
         scanf("%d", &aux);
 
         //adiciona um livro
         if(aux == 1){
             char nome[100];
             int id, flag = 1;
-            printf("Insira o nome do livro\n");
+            printf("\n Insira o nome do livro\n");
             scanf("%s", nome);
             id = id_nome(nome);
 
             //verifica se o livro ja esta cadastrado
             for(int i = 0; i<contador; i++){
                 if(livros[i][0] == id){
-                    printf("Esse livro ja esta cadastrado\n");
+                    printf("\n Esse livro ja esta cadastrado\n");
                     flag = 0;
                 }
             }
             //verifica se ja atingiu o limite
             if(contador == 100){
-                printf("Nao existe mais espaço na biblioteca\n");
+                printf("\n Nao existe mais espa�o na biblioteca\n");
             }
             //se o livro nao estiver cadastrado, cadastra ele
             else if(flag != 0){
-                //insere o id do livro 
+                //insere o id do livro
                 livros[contador][0] = id;
 
                 //inicializa como 0 as outras colunas
@@ -45,7 +46,7 @@ int adicionar_remover(int livros[100][6], char nome_livros[][20], int contador)
                     nome_livros[contador][n] = nome[n];
                 }
                 contador++;
-                printf("Adicionado com sucesso!\n");
+                printf("\n Adicionado com sucesso!\n");
             }
 
         //remove um livro
@@ -54,7 +55,7 @@ int adicionar_remover(int livros[100][6], char nome_livros[][20], int contador)
             int flag2 = 0, aux, id;
             char nome[100];
 
-            printf("Insira o nome do livro que deseja remover\n");
+            printf("\n Insira o nome do livro que deseja remover\n");
             scanf("%s", nome);
 
             id = id_nome(nome);
@@ -73,19 +74,23 @@ int adicionar_remover(int livros[100][6], char nome_livros[][20], int contador)
                         }
                     }
                     contador--;
-                    printf("Removido com sucesso!\n");
+                    printf("\n Removido com sucesso!\n");
                 }
             }
             if(flag2 == 0){
-                printf("Esse livro nao estava na biblioteca\n");
+                printf("\n Esse livro nao estava na biblioteca\n");
             }
         }
         else{
-            printf("Insira uma opcao valida!\n");
+            printf("\n Insira uma opcao valida!\n");
         }
-        
-        printf("voce deseja sair do menu de adicionar e remover?\n1->nao\n2->sim\n");
-        scanf("%d", &flag);
+
+        printf("\n Voce deseja sair do menu de adicionar e remover? \n 1->nao \n 2->sim\n");
+        scanf("%i", &flag);
+
+        if(flag == 2){
+            printf("\n Voce saiu do menu de adicionar e remover\n");
+        }
     }
 
     return livros, contador;
