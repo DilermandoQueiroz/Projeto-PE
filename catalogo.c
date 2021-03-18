@@ -21,6 +21,7 @@ void catalogo(int livros[100][6], char nome_livros[100][20], int qtde){
 
         if(interesse==1){
             detalhes(livros, qtde);
+
         }
 
         else if(interesse != 2){

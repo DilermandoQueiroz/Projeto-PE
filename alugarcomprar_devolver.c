@@ -40,11 +40,11 @@ int AlugarComprar(int livros[100][6], char nome_livros[100][20], int contador){
                     //Aumenta o contador de alugueis
                     livros[i][1]++;
                     //Diminue a quatidade em estoque
-                    livros[i][3]--;
+                    livros[i][2]--;
                     aux=1;
                 }
             }
-            printf("\n Voce saiu da sessao de compras/alugueis! \n");
+
         }
 
         else if(op==2){
@@ -76,6 +76,8 @@ int AlugarComprar(int livros[100][6], char nome_livros[100][20], int contador){
             idlivro=0;
         }
     }
+
+    printf("\n Voce saiu da sessao de compras/alugueis! \n");
 
     return livros, contador;
 }

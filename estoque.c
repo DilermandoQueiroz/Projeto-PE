@@ -16,7 +16,7 @@ void estoque(int livros[100][6], char nome_livros[100][20],int qtde){
             //imprime a quantidade do livro escolhido
             for(i=0;i<100;i++){
                 if(strcmp (nome, nome_livros[i]) == 0){
-                    printf("%s : %i unidades disponiveis\n", nome, livros[i][1]);
+                    printf("%s : %i unidades disponiveis\n", nome, livros[i][2]);
 
                     i=100;
                 }
@@ -36,7 +36,7 @@ void estoque(int livros[100][6], char nome_livros[100][20],int qtde){
                 printf("\n----------------------------------------\n");
                 printf("ESTOQUE:\n");
                 for(int i=0;i<qtde;i++){
-                    printf("%s : %i unidades disponiveis\n", nome_livros[i], livros[i][1]);
+                    printf("%s : %i unidades disponiveis\n", nome_livros[i], livros[i][2]);
                 }
                 printf("\n----------------------------------------\n");
             }
