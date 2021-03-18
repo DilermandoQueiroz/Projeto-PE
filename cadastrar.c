@@ -17,7 +17,8 @@ int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contado
             char nome[100];
             int id, flag = 1;
             printf("\n Insira o nome do livro\n");
-            scanf("%s", nome);
+            fflush(stdin);
+            gets(nome);
             id = id_nome(nome);
 
             //verifica se o livro ja esta cadastrado
@@ -29,7 +30,7 @@ int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contado
             }
             //verifica se ja atingiu o limite
             if(contador == 100){
-                printf("\n Nao existe mais espa�o na biblioteca\n");
+                printf("\n Nao existe mais espaço na biblioteca\n");
             }
             //se o livro nao estiver cadastrado, cadastra ele
             else if(flag != 0){
@@ -38,7 +39,11 @@ int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contado
 
                 //inicializa como 0 as outras colunas
                 for(int k=1; k<colunas; k++){
-                    livros[contador][k] = 0;
+                    if(k==2){
+                        livros[contador][k]=10;
+                    }else{
+                        livros[contador][k] = 0;
+                    }
                 }
 
                 //insero o nome do livro
@@ -52,11 +57,12 @@ int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contado
         //remove um livro
         }
         else if(aux == 2){
-            int flag2 = 0, aux, id;
+            int flag2 = 0, aux, id=0;
             char nome[100];
 
             printf("\n Insira o nome do livro que deseja remover\n");
-            scanf("%s", nome);
+            fflush(stdin);
+            gets(nome);
 
             id = id_nome(nome);
 
