@@ -78,6 +78,9 @@ int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contado
                         for(int k=0; k<colunas; k++){
                             livros[aux][k] = livros[aux+1][k];
                         }
+
+                        //realiza para cada nome de livros
+                        strcpy(nome_livros[aux], nome_livros[aux+1]);
                     }
                     contador--;
                     printf("\n Removido com sucesso!\n");
