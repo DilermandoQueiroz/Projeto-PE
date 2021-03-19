@@ -1,6 +1,6 @@
 #include "biblioteca.h"
 
-void troca(char p1[100][20], int palavra){ //troca a palavra X com a palavra X+1
+void troca(char p1[100][20], int palavra){ //troca a palavra da posicao [X] com a palavra da posicao [X+1]
     char temp[20];
     strcpy(temp, p1[palavra]);
     strcpy(p1[palavra], p1[palavra+1]);
@@ -18,7 +18,7 @@ char converte_maiuscula(char letra){ // converte uma letra maiuscula em minuscul
 }
 
   void ordenar_livros(int livros[100][6], char nome_livros[100][20],int qtde){
-    char ordenado[qtde][20];  //vetor tempor�rio para receber livros em ordem, ser� apagado no fim da fun��o
+    char ordenado[qtde][20];  //vetor temporario para receber livros em ordem, sera apagado no fim da funcao
     int count = 0;
 
     for (int i = 0 ; i < qtde; i++)
@@ -29,23 +29,29 @@ char converte_maiuscula(char letra){ // converte uma letra maiuscula em minuscul
     }
 
 
-    while(count!=qtde-1) //o count � quantidade de vezes que um dupla de palavras est� na ordem certa, em um vetor de comprimento "qtde" a quatidade de duplas � "qtde-1"
+    while(count!=qtde-1) //o count eh quantidade de vezes que um dupla de palavras esta na ordem certa, em um vetor de comprimento "qtde" a quatidade de duplas eh "qtde-1"
     {
         count=0;
 
-        for (int x = 0; x < qtde-1; x++) //como � verificado n e n+1, � necess�rio -1 para n�o comparar com um valor n�o determinado
+        for (int x = 0; x < qtde-1; x++) //como eh verificado n e n+1, eh necessario -1 para nao comparar com um valor nao determinado
         {
-            int comp;
-            if(strlen(ordenado[x])<strlen(ordenado[x+1])) { // achar o menor comprimento
+            int comp; //armazena o comprimento da palavra
+            if(strlen(ordenado[x])<strlen(ordenado[x+1])) //verificar a palavra de menor comprimento
+            { 
                 comp=strlen(ordenado[x]);
-            }else{  comp=strlen(ordenado[x+1]); }
-                int n=0;
-            while (converte_maiuscula(ordenado[x][n])==converte_maiuscula(ordenado[x+1][n]) && n<comp) // como � verificado n e n+1, � necess�rio -1 para n�o comparar com um valor n�o determinado
+            }else
+            {
+                comp=strlen(ordenado[x+1]); 
+            }
+            
+            int n=0;
+            
+            while (converte_maiuscula(ordenado[x][n])==converte_maiuscula(ordenado[x+1][n]) && n<comp) //muda a posicao do caractere comparado e "n<comp" evita a comparacao com lixo de memoria da menor palavra
                 {
                     n++;
                 }
 
-            if (converte_maiuscula(ordenado[x][n]) >converte_maiuscula(ordenado[x+1][n]) ) // troca
+            if (converte_maiuscula(ordenado[x][n]) >converte_maiuscula(ordenado[x+1][n]) ) // troca a palavra [x] com a [x+1] se o caractere de mesma posicao for maior. 
             {
                 troca(ordenado,x);
 
@@ -58,7 +64,7 @@ char converte_maiuscula(char letra){ // converte uma letra maiuscula em minuscul
 
     }
 
-    for (int i = 0; i < qtde; i++)
+    for (int i = 0; i < qtde; i++) //imprime os livros ordenados
     {
         printf("%s\n", ordenado[i]);
     }
