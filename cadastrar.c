@@ -3,7 +3,6 @@
 /*
 Funcao para adicionar ou remover um livro pelo seu ID
 */
-
 int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contador)
 {
     int aux = 0, flag = 1, colunas = 6;
@@ -28,16 +27,19 @@ int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contado
                     flag = 0;
                 }
             }
+
             //verifica se ja atingiu o limite
             if(contador == 100){
                 printf("\n Nao existe mais espaço na biblioteca\n");
             }
+
             //se o livro nao estiver cadastrado, cadastra ele
             else if(flag != 0){
+
                 //insere o id do livro
                 livros[contador][0] = id;
 
-                //inicializa como 0 as outras colunas
+                //inicializa as outras colunas
                 for(int k=1; k<colunas; k++){
                     if(k==2){
                         livros[contador][k]=10;
@@ -46,10 +48,12 @@ int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contado
                     }
                 }
 
-                //insero o nome do livro
+                //insere o nome do livro
                 for(int n=0; n<=strlen(nome); n++){
                     nome_livros[contador][n] = nome[n];
                 }
+
+                //incrementa o contador
                 contador++;
                 printf("\n Adicionado com sucesso!\n");
             }
@@ -74,6 +78,7 @@ int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contado
 
                     //desloca uma possicao para a esquerda a partir da que foi removida
                     for(aux; aux<contador; aux++){
+
                         //realiza para cada coluna do livros
                         for(int k=0; k<colunas; k++){
                             livros[aux][k] = livros[aux+1][k];
@@ -82,6 +87,8 @@ int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contado
                         //realiza para cada nome de livros
                         strcpy(nome_livros[aux], nome_livros[aux+1]);
                     }
+
+                    //decrementa o contador
                     contador--;
                     printf("\n Removido com sucesso!\n");
                 }
