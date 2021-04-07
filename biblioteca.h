@@ -13,15 +13,18 @@ struct livros{
     int avaliacao, qtd_avaliacoes;
 };
 
-struct cliente{
-    char nome[50];
+struct clientes{
     int id;
     char livros_alugado[20][50];
-    char usuario[10];
-    char senha[10];
+    char usuario[50];
+    char senha[50];
 };
 
-int adicionar_remover(int livros[100][6], char nome_livros[100][20], int contador);
+// feito por Dilermando Queiroz Neto RA: 11201722993
+int adicionar_remover(struct livros livro[100], int contador);
+int cadastrar_cliente(struct clientes cliente[10], int contador);
+void exporta_csv(struct livros livro[100], int contador);
+
 int id_nome(char nome[100]);
 int avaliar(int livros[100][6], int contador);
 void detalhes(int livros[100][6], int contador);
