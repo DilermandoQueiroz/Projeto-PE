@@ -11,7 +11,7 @@ int adicionar_remover(struct livros livro[100], int contador)
         printf("\n Voce deseja: \n 1->Adicionar um livro \n 2->Remover um livro\n 3->Voltar para o menu");
         scanf("%d", &aux);
 
-        //adiciona um livro
+        // Adiciona um livro
         if(aux == 1){
             char nome[50];
             int id, flag = 1;
@@ -21,7 +21,7 @@ int adicionar_remover(struct livros livro[100], int contador)
             gets(nome);
             id = id_nome(nome);
 
-            //verifica se o livro ja esta cadastrado
+            // Verifica se o livro ja esta cadastrado
             for(int i = 0; i<contador; i++){
                 if(livro[i].id == id){
 
@@ -33,15 +33,15 @@ int adicionar_remover(struct livros livro[100], int contador)
                 }
             }
 
-            //verifica se ja atingiu o limite
+            // Verifica se ja atingiu o limite
             if(contador == 100){
                 printf("\n Nao existe mais espaço na biblioteca\n");
             }
 
-            //se o livro nao estiver cadastrado, cadastra ele
+            // Se o livro nao estiver cadastrado, cadastra ele
             else if(flag != 0){
 
-                //insere as informacoes do livro
+                // Insere as informacoes do livro
                 strcpy(livro[contador].nome, nome);
                 livro[contador].id = id;
                 livro[contador].qtd_alugado = 0;
@@ -49,12 +49,16 @@ int adicionar_remover(struct livros livro[100], int contador)
                 livro[contador].avaliacao = 0;
                 livro[contador].qtd_avaliacoes = 0;
 
-                //incrementa o contador
+                // Adicionando ao arquivo livros.bin
+                escrever_livros(livro[contador], contador, contador)
+
+                // Incrementa o contador
                 contador++;
                 printf("\n Adicionado com sucesso!\n");
+
             }
 
-        //remove um livro
+        // Remove um livro
         }
         else if(aux == 2){
             int flag2 = 0, aux, id=0;
@@ -66,18 +70,18 @@ int adicionar_remover(struct livros livro[100], int contador)
 
             id = id_nome(nome);
 
-            //verifica se o livro consta na biblioteca e o remove
+            // Verifica se o livro consta na biblioteca e o remove
             for(int i = 0; i<contador; i++){
                 if(livro[i].id == id){
                     flag2 = 1;
                     aux = i;
 
-                    //desloca uma possicao para a esquerda a partir da que foi removida
+                    // Desloca uma possicao para a esquerda a partir da que foi removida
                     for(aux; aux<contador; aux++){
                         livro[aux] = livro[aux+1];
                     }
 
-                    //decrementa o contador
+                    // Decrementa o contador
                     contador--;
                     printf("\n Removido com sucesso!\n");
                 }
@@ -87,7 +91,7 @@ int adicionar_remover(struct livros livro[100], int contador)
             }
         }
         
-        //sai da funcao adicionar_remover e volta pra onde foi chamada main
+        // Sai da funcao adicionar_remover e volta pra onde foi chamada main
         else if(aux == 3){
             flag = 2;
             printf("\n Voce saiu do menu de adicionar e remover\n");
