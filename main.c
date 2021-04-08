@@ -4,9 +4,17 @@ int main(){
 
     int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0;
 
+    // Abre o arquivo que esta salvo o struct livros
+    FILE *arquivo = fopen("./dados/livros.bin", "rb");
+
     // Cria um vetor de struct livros, definido em biblioteca.h
     struct livros livro[100];
     int contador_livros = 0;
+
+    // Se o arquivo existir leia os dados contido nele
+    if(arquivo != NULL){
+        ler_livros(livro);
+    }
 
     // Cria um vetor de tamanho 10 para struct clientes
     struct clientes cliente[10];
