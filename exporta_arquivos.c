@@ -28,7 +28,7 @@ void exporta_csv(struct livros livro[100], int contador){
 
 /* Escreve um struct livros livro[] em um .bin para ser lido depois
 */
-void escrever_livros(struct livros livro[]){
+void escrever_livros(struct livros livro[], int contador, int indice){
     FILE *arquivo = fopen("dados/livros.bin", "ab");
 
     // verifica se aconteceu algum erro com o arquivo
@@ -38,9 +38,16 @@ void escrever_livros(struct livros livro[]){
     }
     // caso contrario escreve os aquivos em um binario
     else{
-        // para cada um struct em livro[]
-        for(int i = 0; i < sizeof(livro) - 1; i++){
-            fwrite(&livro[i], sizeof(struct livros), 1, arquivo);
+        // Se o indice for negativo escreva todos os livros ate o contador
+        if(indice < 0){
+            // para cada um struct em livro[]
+            for(int i = 0; i < contador; i++){
+                fwrite(&livro[i], sizeof(struct livros), 1, arquivo);
+            }
+        }
+        // Caso contrario escreve apenas o livro[indice] que foi passado
+        else{
+            fwrite(&livro[indice], sizeof(struct livros), 1, arquivo);
         }
     }
 
