@@ -14,7 +14,7 @@ void exporta_csv(struct livros livro[100], int contador){
     // caso contrario grava os dados em um arquivo .csv
     else{
         // Escreve o cabecalho 
-        fprintf(arquivo, "Nome, ID, Avaliacao, Qtd Alugado, Qtd Estoque, Qtd Avaliacao");
+        fprintf(arquivo, "Nome, ID, Avaliacao, Qtd Alugado, Qtd Estoque, Qtd Avaliacao\n");
         
         // Escreve os dados dos livros
         for(int i=0; i<contador; i++){
@@ -79,10 +79,9 @@ int ler_livros(struct livros livro[]){
                 livro[contador] = livro_aux;
                 contador++;
             }
-
+        }
         // terminado com sucesso
         fclose(arquivo);
         return contador;
-        }
     }
 }
