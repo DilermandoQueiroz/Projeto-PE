@@ -20,10 +20,12 @@ struct clientes{
     char senha[50];
 };
 
-// feito por Dilermando Queiroz Neto RA: 11201722993
+// Feito por Dilermando Queiroz Neto RA: 11201722993
 int adicionar_remover(struct livros livro[100], int contador);
 int cadastrar_cliente(struct clientes cliente[10], int contador);
 void exporta_csv(struct livros livro[100], int contador);
+void escrever_livros(struct livros livro[], int contador, int indice);
+int ler_livros(struct livros livro[]);
 
 int id_nome(char nome[100]);
 int avaliar(int livros[100][6], int contador);
