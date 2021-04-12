@@ -4,18 +4,21 @@ int main(){
 
     int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0;
 
-    //vetor com id de todos os livros e o contador com quantos livros tem:
-    //livros[pos][0] = ID
-    //livros[pos][1] = qtd alugado
-    //livros[pos][2] = qtd em estoque
-    //livros[pos][3] = nota de 0-100
-    //livros[pos][4] = qtd avaliacao
-    //livros[pos][5] = qtd comprado
-    int livros[100][6], contador_livros = 0;
+    // Abre o arquivo que esta salvo o struct livros
+    FILE *arquivo = fopen("./dados/livros.bin", "rb");
 
-    //nome_livros[pos] onde cada pos armazena uma string de tamanho 20
-    char nome_livros[100][20];
+    // Cria um vetor de struct livros, definido em biblioteca.h
+    struct livros livro[100];
+    int contador_livros = 0;
 
+    // Se o arquivo existir leia os dados contido nele
+    if(arquivo != NULL){
+        ler_livros(livro);
+    }
+
+    // Cria um vetor de tamanho 10 para struct clientes
+    struct clientes cliente[10];
+    int contador_clientes = 0;
 
     while(flag != 2){
 
@@ -69,7 +72,7 @@ int main(){
                 scanf("%i", &escolha_funcionario);
 
                 if(escolha_funcionario == 1){
-                    livros, contador_livros = adicionar_remover(livros, nome_livros, contador_livros);
+                    contador_livros = adicionar_remover(livro, contador_livros);
                 }
 
                 else if(escolha_funcionario == 2){
