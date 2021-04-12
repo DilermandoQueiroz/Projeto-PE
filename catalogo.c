@@ -1,7 +1,7 @@
 #include "biblioteca.h"
 
-void catalogo(int livros[100][6], char nome_livros[100][20], int qtde){
-    int interesse=0;
+void catalogo(struct livros livro[100], int qtde){
+    int interesse = 0;
 
     printf("\n----------------------------------------\n");
     printf("\n Catalogo Biblioteca UFABC: \n");
@@ -10,7 +10,7 @@ void catalogo(int livros[100][6], char nome_livros[100][20], int qtde){
         printf("\n Nenhum livro cadastrado\n");
     }
     else{
-        ordenar_livros(livros, nome_livros, qtde);
+        ordenar_livros(livro, qtde);
     }
 
     printf("\n----------------------------------------\n");
@@ -20,7 +20,7 @@ void catalogo(int livros[100][6], char nome_livros[100][20], int qtde){
         scanf("%i", &interesse);
 
         if(interesse==1){
-            detalhes(livros, qtde);
+            detalhes(livro, qtde);
             interesse = 2;
         }
 
