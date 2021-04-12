@@ -16,6 +16,8 @@ int main(){
         ler_livros(livro);
     }
 
+    fclose(arquivo);
+    
     // Cria um vetor de tamanho 10 para struct clientes
     struct clientes cliente[10];
     int contador_clientes = 0;
