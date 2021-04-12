@@ -30,8 +30,10 @@ int id_nome(char nome[100]);
 
 int avaliar(int livros[100][6], int contador);
 void detalhes(int livros[100][6], int contador);
-void catalogo(int livros[100][6], char nome_livros[100][20], int qtde);
-void estoque(int livros[100][6], char nome_livros[100][20], int qtde);
+
+void catalogo(struct livros livro[100], int qtde);
+void estoque(struct livros livro[100], int qtde);
+
 int AlugarComprar(int livros[100][6], char nome_livros[100][20], int contador);
 int Devolver(int livros[100][6], int contador);
 void troca(char p1[100][20], int palavra);

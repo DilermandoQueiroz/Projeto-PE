@@ -1,6 +1,6 @@
 #include "biblioteca.h"
 
-void estoque(int livros[100][6], char nome_livros[100][20],int qtde){
+void estoque(struct livros livro[100], int qtde){
     int escolha = 0, i;
     char nome[20];
 
@@ -14,11 +14,11 @@ void estoque(int livros[100][6], char nome_livros[100][20],int qtde){
             gets(nome);
 
             //imprime a quantidade do livro escolhido
-            for(i=0;i<100;i++){
-                if(strcmp (nome, nome_livros[i]) == 0){
-                    printf("%s : %i unidades disponiveis\n", nome, livros[i][2]);
+            for(i=0; i<100; i++){
+                if(strcmp (nome, livro[i].nome) == 0){
+                    printf("%s : %i unidades disponiveis\n", nome, livro[i].qtd_estoque);
 
-                    i=100;
+                    i = 100;
                 }
             }
 
@@ -35,8 +35,8 @@ void estoque(int livros[100][6], char nome_livros[100][20],int qtde){
             else{
                 printf("\n----------------------------------------\n");
                 printf("ESTOQUE:\n");
-                for(int i=0;i<qtde;i++){
-                    printf("%s : %i unidades disponiveis\n", nome_livros[i], livros[i][2]);
+                for(int i=0; i<qtde; i++){
+                    printf("%s : %i unidades disponiveis\n", livro[i].nome, livro[i].qtd_estoque);
                 }
                 printf("\n----------------------------------------\n");
             }
