@@ -33,7 +33,7 @@ int main(){
                 scanf("%i", &escolha_cliente);
 
                 if(escolha_cliente == 1){
-                    catalogo(livros, nome_livros, contador_livros);
+                    catalogo(livro, contador_livros);
                 }
 
                 else if(escolha_cliente == 2){
@@ -76,7 +76,7 @@ int main(){
                 }
 
                 else if(escolha_funcionario == 2){
-                    estoque(livros, nome_livros, contador_livros);
+                    estoque(livro, contador_livros);
                 }
 
                 else if(escolha_funcionario == 3){
