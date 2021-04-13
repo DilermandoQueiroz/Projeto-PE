@@ -31,8 +31,8 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
         // Se nao existir um usuario, cadastra ele
         if(existe == 0){
             // cadastra apenas o id por seguranca, nao utiliza nome
-            cliente[i].id = id;
-            strcpy(cliente[i].usuario, usuario);
+            cliente[contador].id = id;
+            strcpy(cliente[contador].usuario, usuario);
 
             // Cadastra a senha, podemos usar a biblioteca #include <openssl/md5.h> para criptografa a senha
             char senha[50];
@@ -41,7 +41,7 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
             gets(senha);
 
             // armazena a senha ela nao esta segura!!!
-            strcpy(cliente[i].senha, senha);
+            strcpy(cliente[contador].senha, senha);
 
             // incrementa o contador de clientes
             contador++;
