@@ -2,13 +2,20 @@
 
 int main(){
 
-    int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0;
+    int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, erro = 0, tam_atual = 100;
 
     // Abre o arquivo que esta salvo o struct livros
     FILE *arquivo = fopen("./dados/livros.bin", "rb");
 
-    // Cria um vetor de struct livros, definido em biblioteca.h
-    struct livros livro[100];
+    // Cria um vetor dinamico de struct livros, definido em biblioteca.h
+    struct livros *livro = NULL;
+    livro = (struct livros *) malloc(tam_atual*sizeof(struct livros));
+
+    if(livro == NULL){
+        printf("Aconteceu um erro, tente mais tarde\n");
+        erro = 1;
+    }
+
     int contador_livros = 0;
 
     // Se o arquivo existir leia os dados contido nele
@@ -17,12 +24,12 @@ int main(){
     }
 
     fclose(arquivo);
-    
+
     // Cria um vetor de tamanho 10 para struct clientes
     struct clientes cliente[10];
     int contador_clientes = 0;
 
-    while(flag != 2){
+    while(flag != 2 && erro != 1){
 
         printf("-----------------------------------------------------------------------------------");
         printf("\n Ola seja bem-vindo a Biblioteca UFABC! Voce gostaria de acessar nosso sistema como? \n Digite 1 - Cliente \n Digite 2 - Funcionario\n Digite 3 - Sair da biblioteca\n");
@@ -39,19 +46,19 @@ int main(){
                 }
 
                 else if(escolha_cliente == 2){
-                    livros, contador_livros = AlugarComprar(livros, nome_livros, contador_livros);
+                    contador_livros = AlugarComprar(livro, contador_livros);
                 }
 
                 else if(escolha_cliente == 3){
-                    Devolver(livros, contador_livros);
+                    Devolver(livro, contador_livros);
                 }
 
                 else if(escolha_cliente == 4){
-                    livros, contador_livros = avaliar(livros, contador_livros);
+                    contador_livros = avaliar(livro, contador_livros);
                 }
 
                 else if(escolha_cliente == 5){
-                    detalhes(livros, contador_livros);
+                    detalhes(livro, contador_livros);
                 }
 
                 else if(escolha_cliente == 6){
@@ -74,7 +81,7 @@ int main(){
                 scanf("%i", &escolha_funcionario);
 
                 if(escolha_funcionario == 1){
-                    contador_livros = adicionar_remover(livro, contador_livros);
+                    contador_livros = adicionar_remover(livro, contador_livros, tam_atual);
                 }
 
                 else if(escolha_funcionario == 2){

@@ -45,7 +45,7 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
 
             // incrementa o contador de clientes
             contador++;
-            
+
             flag = 1;
         }
     }
