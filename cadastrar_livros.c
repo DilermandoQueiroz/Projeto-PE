@@ -8,7 +8,7 @@ int adicionar_remover(struct livros livro[100], int contador)
     int aux = 0, flag = 1, colunas = 6;
 
     while(flag != 2){
-        printf("\n Voce deseja: \n 1->Adicionar um livro \n 2->Remover um livro\n 3->Voltar para o menu");
+        printf("\n Voce deseja: \n 1->Adicionar um livro \n 2->Remover um livro\n 3->Voltar para o menu\n");
         scanf("%d", &aux);
 
         // Adiciona um livro
@@ -49,19 +49,18 @@ int adicionar_remover(struct livros livro[100], int contador)
                 livro[contador].avaliacao = 0;
                 livro[contador].qtd_avaliacoes = 0;
 
-                // Adicionando ao arquivo livros.bin
-                escrever_livros(livro[contador], contador, contador)
-
                 // Incrementa o contador
                 contador++;
                 printf("\n Adicionado com sucesso!\n");
 
+                // Adicionando ao arquivo livros.bin
+                escrever_livros(livro, contador);
             }
 
         // Remove um livro
         }
         else if(aux == 2){
-            int flag2 = 0, aux, id=0;
+            int flag2 = 0, aux = 0, id=0;
             char nome[100];
 
             printf("\n Insira o nome do livro que deseja remover\n");
@@ -75,19 +74,26 @@ int adicionar_remover(struct livros livro[100], int contador)
                 if(livro[i].id == id){
                     flag2 = 1;
                     aux = i;
-
-                    // Desloca uma possicao para a esquerda a partir da que foi removida
-                    for(aux; aux<contador; aux++){
-                        livro[aux] = livro[aux+1];
-                    }
-
-                    // Decrementa o contador
-                    contador--;
-                    printf("\n Removido com sucesso!\n");
                 }
             }
+
+            // Caso nao estiver na biblioteca
             if(flag2 == 0){
                 printf("\n Esse livro nao estava na biblioteca\n");
+            }
+
+            // Caso estiver na biblioteca
+            else{
+                // Desloca uma possicao para a esquerda a partir da que foi removida
+                for(int j = aux; j<contador; j++){
+                    livro[j] = livro[j+1];
+                }
+
+                // Decrementa o contador
+                contador--;
+                printf("\n Removido com sucesso!\n");
+
+                escrever_livros(livro, contador);
             }
         }
         

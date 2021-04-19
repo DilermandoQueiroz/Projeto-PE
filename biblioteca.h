@@ -24,10 +24,10 @@ struct clientes{
 int adicionar_remover(struct livros livro[100], int contador);
 int cadastrar_cliente(struct clientes cliente[10], int contador);
 void exporta_csv(struct livros livro[100], int contador);
-void escrever_livros(struct livros livro[], int contador, int indice);
+void escrever_livros(struct livros livro[], int contador);
 int ler_livros(struct livros livro[]);
-
 int id_nome(char nome[100]);
+
 int avaliar(int livros[100][6], int contador);
 void detalhes(int livros[100][6], int contador);
 
