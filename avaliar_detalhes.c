@@ -2,7 +2,7 @@
 
 /*Avalia um livro
 */
-int avaliar(int livros[100][6], int contador){
+int avaliar(struct livros livro[], int contador){
 
     char nome[20];
     printf("\n Por favor, entre com o nome do livro que deseja avaliar:\n");
@@ -17,7 +17,7 @@ int avaliar(int livros[100][6], int contador){
     // Encontrar o livro na lista
     while(aux == 0){
 
-        if(id == livros[cont][0]){
+        if(id == livro[cont].id){
 
             while(aux == 0){
 
@@ -39,13 +39,13 @@ int avaliar(int livros[100][6], int contador){
 
             // Atualizar a m�dia do livro
 
-            int n = livros[cont][4];
-            int media = livros[cont][3];
+            int n = livro[cont].qtd_avaliacoes;
+            int media = livro[cont].avaliacao;
 
             media = (n*media+nota)/(n+1);
 
-            livros[cont][4] = n+1;
-            livros[cont][3] = media;
+            livro[cont].qtd_avaliacoes = n+1;
+            livro[cont].avaliacao = media;
 
         }
 
@@ -57,10 +57,10 @@ int avaliar(int livros[100][6], int contador){
         cont = cont+1;
     }
 
-    return livros, contador; // Retorna a matriz livros atualizada
+    return contador; // Retorna a matriz livros atualizada
 }
 
-void detalhes(int livros[100][6], int contador){
+void detalhes(struct livros livro[], int contador){
     char nome[50];
 
     fflush(stdin);
@@ -73,10 +73,10 @@ void detalhes(int livros[100][6], int contador){
 
     // Encontrar o livro na lista de livros cadastrados
     while(aux == 0){
-        if(id == livros[cont][0]){
+        if(id == livro[cont].id){
             aux = 1;
-            printf("\n O livro '%s' foi alugado %i vezes, avaliado por %i pessoas e possui media %i.\n", nome, livros[cont][1], livros[cont][4], livros[cont][3]);
-            printf("Existem %i copias em nosso estoque.\n\n", livros[cont][2]);
+            printf("\n O livro '%s' foi alugado %i vezes, avaliado por %i pessoas e possui media %i.\n", nome, livro[cont].qtd_alugado, livro[cont].qtd_avaliacoes, livro[cont].avaliacao);
+            printf("Existem %i copias em nosso estoque.\n\n", livro[cont].qtd_estoque);
         }
         if(cont == contador+1){
             printf("Este livro ainda nao foi cadastrado.\n\n");
@@ -94,7 +94,7 @@ void detalhes(int livros[100][6], int contador){
         scanf("%i", &a);
 
         if(a == 1){
-            detalhes(livros,contador);
+            detalhes(livro,contador);
             aux = 1;
         }
         else if(a == 2){

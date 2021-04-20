@@ -2,7 +2,7 @@
 
 /* Funcao para exportar uma struct para um arquivo csv
 */
-void exporta_csv(struct livros livro[100], int contador){
+void exporta_csv(struct livros livro[], int contador){
     FILE *arquivo = fopen("dados/livros.csv", "w");
 
     //verifica se aconteceu um erro
@@ -13,9 +13,9 @@ void exporta_csv(struct livros livro[100], int contador){
 
     // caso contrario grava os dados em um arquivo .csv
     else{
-        // Escreve o cabecalho 
+        // Escreve o cabecalho
         fprintf(arquivo, "Nome, ID, Avaliacao, Qtd Alugado, Qtd Estoque, Qtd Avaliacao\n");
-        
+
         // Escreve os dados dos livros
         for(int i=0; i<contador; i++){
             fprintf(arquivo, "%s, %i, %i, %i, %i, %i\n", livro[i].nome, livro[i].id, livro[i].avaliacao, livro[i].qtd_alugado, livro[i].qtd_estoque, livro[i].qtd_avaliacoes);
@@ -24,7 +24,7 @@ void exporta_csv(struct livros livro[100], int contador){
         printf("\n Exportado com sucesso ! \n Agora voce pode analisar como esta indo sua biblioteca !\n");
         fclose(arquivo);
     }
-} 
+}
 
 /* Escreve um struct livros livro[] em um .bin para ser lido depois
 */
@@ -42,10 +42,10 @@ void escrever_livros(struct livros livro[], int contador){
     for(int i = 0; i < contador; i++){
         fwrite(&livro[i], sizeof(struct livros), 1, arquivo);
     }
-        
+
     printf("\n Exportado com sucesso ! \n");
     fclose(arquivo);
-    
+
 }
 
 /* Escreve um struct clientes cliente[] em um .bin para ser lido depois
@@ -91,7 +91,7 @@ int ler_livros(struct livros livro[]){
 
             size_t r = fread(&livro_aux, sizeof(struct livros), 1, arquivo);
 
-            // caso termine    
+            // caso termine
             if(r < 1){
                 flag = 1;
             }
