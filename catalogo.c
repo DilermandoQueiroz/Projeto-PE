@@ -1,10 +1,12 @@
 #include "biblioteca.h"
 
-void catalogo(struct livros livro[100], int qtde){
+void catalogo(struct livros livro[], int qtde){
     int interesse = 0;
 
     printf("\n----------------------------------------\n");
     printf("\n Catalogo Biblioteca UFABC: \n");
+
+    //add opcao do cliente ver o catalogo por ordem de avaliacao e qtd de vendas
 
     if(qtde == 0){
         printf("\n Nenhum livro cadastrado\n");

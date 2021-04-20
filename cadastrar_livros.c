@@ -3,7 +3,7 @@
 /*
 Funcao para adicionar ou remover um livro pelo seu ID
 */
-int adicionar_remover(struct livros livro[100], int contador)
+int adicionar_remover(struct livros livro[], int contador, int tam_atual)
 {
     int aux = 0, flag = 1, colunas = 6;
 
@@ -34,12 +34,23 @@ int adicionar_remover(struct livros livro[100], int contador)
             }
 
             // Verifica se ja atingiu o limite
-            if(contador == 100){
-                printf("\n Nao existe mais espaÃ§o na biblioteca\n");
+            //Se a capacidade maxima for alcançada com a adicao de um livro, o tamanho do vetor aumenta
+            if((contador+1) > tam_atual){
+                livro = (struct livros *) realloc(livro,(contador + 50)*sizeof(struct livros));
+
+                if(livro == NULL){
+                    printf("\nA memoria esta cheia!\n");
+
+                    flag = 0;
+                }
+                else{
+                    tam_atual = contador + 50;
+                }
+
             }
 
             // Se o livro nao estiver cadastrado, cadastra ele
-            else if(flag != 0){
+            if(flag != 0){
 
                 // Insere as informacoes do livro
                 strcpy(livro[contador].nome, nome);
@@ -93,10 +104,10 @@ int adicionar_remover(struct livros livro[100], int contador)
                 contador--;
                 printf("\n Removido com sucesso!\n");
 
-                escrever_livros(livro, contador);
+                //escrever_livros(livro, contador);
             }
         }
-        
+
         // Sai da funcao adicionar_remover e volta pra onde foi chamada main
         else if(aux == 3){
             flag = 2;
