@@ -19,7 +19,7 @@ int main(){
 
     // Se o arquivo existir leia os dados contido nele
     if(arquivo != NULL){
-        ler_livros(livro);
+        contador_livros = ler_livros(livro);
     }
 
     fclose(arquivo);
