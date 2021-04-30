@@ -2,7 +2,7 @@
 
 int main(){
 
-    int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, erro = 0, tam_atual = 100;
+    int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, tam_atual = 100;
 
     // Abre o arquivo que esta salvo o struct livros
     FILE *arquivo = fopen("./dados/livros.bin", "rb");
@@ -13,7 +13,6 @@ int main(){
 
     if(livro == NULL){
         printf("Aconteceu um erro, tente mais tarde\n");
-        erro = 1;
     }
 
     int contador_livros = 0;
@@ -29,7 +28,7 @@ int main(){
     struct clientes cliente[10];
     int contador_clientes = 0;
 
-    while(flag != 2 && erro != 1){
+    while(flag != 2){
 
         printf("-----------------------------------------------------------------------------------");
         printf("\n Ola seja bem-vindo a Biblioteca UFABC! Voce gostaria de acessar nosso sistema como? \n Digite 1 - Cliente \n Digite 2 - Funcionario\n Digite 3 - Sair da biblioteca\n");
