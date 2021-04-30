@@ -76,7 +76,7 @@ int main(){
         else if(aux == 2){
 
             do{
-                printf("\n E muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Cadastrar/Remover um livro \n Digite 2 - Ver o estoque \n Digite 3 - Sair da area do funcionario\n");
+                printf("\n E muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Cadastrar/Remover um livro \n Digite 2 - Ver o estoque \n Digite 3 - Exportar arquivo csv \n Digite 4 - Sair da area do funcionario\n");
                 scanf("%i", &escolha_funcionario);
 
                 if(escolha_funcionario == 1){
@@ -88,6 +88,10 @@ int main(){
                 }
 
                 else if(escolha_funcionario == 3){
+                    exporta_csv(livro, contador_livros);
+                }
+
+                else if(escolha_funcionario == 4){
                     printf("\n Voce saiu da area do funcionario!\n");
                 }
 
@@ -95,7 +99,7 @@ int main(){
                     printf("\n Essa entrada nao eh valida!\n");
                 }
 
-            }while(escolha_funcionario!=3);
+            }while(escolha_funcionario != 4);
 
             escolha_funcionario = 0;
         }
