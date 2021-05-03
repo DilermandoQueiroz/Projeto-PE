@@ -18,7 +18,7 @@ struct clientes{
     int id;
     char livros_alugado[20][50];
     char usuario[50];
-    char senha[50];
+    int senha;
 };
 
 // Feito por Dilermando Queiroz Neto RA: 11201722993
@@ -28,6 +28,9 @@ void exporta_csv(struct livros livro[], int contador);
 void escrever_livros(struct livros livro[], int contador);
 int ler_livros(struct livros livro[]);
 int id_nome(char nome[100]);
+int verificacao(int id, int senha, struct clientes cliente[], int contador);
+void escrever_cliente(struct clientes cliente[], int contador);
+int ler_clientes(struct clientes cliente[]);
 
 int avaliar(struct livros livro[], int contador);
 void detalhes(struct livros livro[], int contador);

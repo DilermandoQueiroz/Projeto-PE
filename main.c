@@ -2,7 +2,7 @@
 
 int main(){
 
-    int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, erro = 0, tam_atual = 100;
+    int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, tam_atual = 100;
 
     // Abre o arquivo que esta salvo o struct livros
     FILE *arquivo = fopen("./dados/livros.bin", "rb");
@@ -13,14 +13,13 @@ int main(){
 
     if(livro == NULL){
         printf("Aconteceu um erro, tente mais tarde\n");
-        erro = 1;
     }
 
     int contador_livros = 0;
 
     // Se o arquivo existir leia os dados contido nele
     if(arquivo != NULL){
-        ler_livros(livro);
+        contador_livros = ler_livros(livro);
     }
 
     fclose(arquivo);
@@ -29,7 +28,7 @@ int main(){
     struct clientes cliente[10];
     int contador_clientes = 0;
 
-    while(flag != 2 && erro != 1){
+    while(flag != 2){
 
         printf("-----------------------------------------------------------------------------------");
         printf("\n Ola seja bem-vindo a Biblioteca UFABC! Voce gostaria de acessar nosso sistema como? \n Digite 1 - Cliente \n Digite 2 - Funcionario\n Digite 3 - Sair da biblioteca\n");
@@ -77,7 +76,7 @@ int main(){
         else if(aux == 2){
 
             do{
-                printf("\n E muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Cadastrar/Remover um livro \n Digite 2 - Ver o estoque \n Digite 3 - Sair da area do funcionario\n");
+                printf("\n E muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Cadastrar/Remover um livro \n Digite 2 - Ver o estoque \n Digite 3 - Exportar arquivo csv \n Digite 4 - Sair da area do funcionario\n");
                 scanf("%i", &escolha_funcionario);
 
                 if(escolha_funcionario == 1){
@@ -89,6 +88,10 @@ int main(){
                 }
 
                 else if(escolha_funcionario == 3){
+                    exporta_csv(livro, contador_livros);
+                }
+
+                else if(escolha_funcionario == 4){
                     printf("\n Voce saiu da area do funcionario!\n");
                 }
 
@@ -96,7 +99,7 @@ int main(){
                     printf("\n Essa entrada nao eh valida!\n");
                 }
 
-            }while(escolha_funcionario!=3);
+            }while(escolha_funcionario != 4);
 
             escolha_funcionario = 0;
         }

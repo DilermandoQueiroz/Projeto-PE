@@ -14,7 +14,7 @@ int adicionar_remover(struct livros livro[], int contador, int tam_atual)
         // Adiciona um livro
         if(aux == 1){
             char nome[50];
-            int id, flag = 1;
+            int id, flag2 = 1;
 
             printf("\n Insira o nome do livro\n");
             fflush(stdin);
@@ -29,12 +29,12 @@ int adicionar_remover(struct livros livro[], int contador, int tam_atual)
                     livro[i].qtd_estoque += 1;
 
                     printf("\n Esse livro ja esta cadastrado, foi adicionado mais um em estoque\n");
-                    flag = 0;
+                    flag2 = 0;
                 }
             }
 
             // Verifica se ja atingiu o limite
-            //Se a capacidade maxima for alcançada com a adicao de um livro, o tamanho do vetor aumenta
+            //Se a capacidade maxima for alcanï¿½ada com a adicao de um livro, o tamanho do vetor aumenta
             if((contador+1) > tam_atual){
                 livro = (struct livros *) realloc(livro,(contador + 50)*sizeof(struct livros));
 
@@ -50,13 +50,13 @@ int adicionar_remover(struct livros livro[], int contador, int tam_atual)
             }
 
             // Se o livro nao estiver cadastrado, cadastra ele
-            if(flag != 0){
+            if(flag2 != 0){
 
                 // Insere as informacoes do livro
                 strcpy(livro[contador].nome, nome);
                 livro[contador].id = id;
                 livro[contador].qtd_alugado = 0;
-                livro[contador].qtd_estoque = 0;
+                livro[contador].qtd_estoque = 1;
                 livro[contador].avaliacao = 0;
                 livro[contador].qtd_avaliacoes = 0;
 
@@ -71,8 +71,8 @@ int adicionar_remover(struct livros livro[], int contador, int tam_atual)
         // Remove um livro
         }
         else if(aux == 2){
-            int flag2 = 0, aux = 0, id=0;
-            char nome[100];
+            int flag2 = 0, aux = 0, id = 0;
+            char nome[50];
 
             printf("\n Insira o nome do livro que deseja remover\n");
             fflush(stdin);
@@ -104,7 +104,7 @@ int adicionar_remover(struct livros livro[], int contador, int tam_atual)
                 contador--;
                 printf("\n Removido com sucesso!\n");
 
-                //escrever_livros(livro, contador);
+                escrever_livros(livro, contador);
             }
         }
 
