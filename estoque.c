@@ -27,6 +27,8 @@ void OrganizaEstoqueDecrescente(struct livros livro[], int qtde){
             ordenado = 1;
         }
 
+        escrever_livros(livro, qtde);
+
     }while(ordenado != 1);
 }
 
@@ -57,7 +59,10 @@ void OrganizaEstoqueCrescente(struct livros livro[], int qtde){
             ordenado = 1;
         }
 
+        escrever_livros(livro, qtde);
+
     }while(ordenado != 1);
+
 }
 
 void estoque(struct livros livro[], int qtde){
