@@ -2,7 +2,7 @@
 
 int main(){
 
-    int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, erro = 0, tam_atual = 100;
+    int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, tam_atual = 100;
     int login_cliente=0, login_funcionario, id_cliente = 0;
 
     // Abre o arquivo que esta salvo o struct livros
@@ -30,7 +30,7 @@ int main(){
     int contador_clientes = 0;
 
     erro=2;
-    while(flag != 2 && erro != 1){
+    while(flag != 2){
 
         printf("-----------------------------------------------------------------------------------");
         printf("\n Ola seja bem-vindo a Biblioteca UFABC! Voce gostaria de acessar nosso sistema como? \n Digite 1 - Cliente \n Digite 2 - Funcionario\n Digite 3 - Sair da biblioteca\n");
@@ -60,11 +60,11 @@ int main(){
                             gets(senha);
                             senha_cliente = id_nome(senha);
 
-                            //Chama função de verificar cadastro
+                            //Chama funÃ§Ã£o de verificar cadastro
                             login_cliente = verificacao(id_cliente, senha_cliente, cliente, contador_clientes);
 
                         }else if(op == 2){
-                            //Chama função de cadastrar os clientes;
+                            //Chama funÃ§Ã£o de cadastrar os clientes;
                             contador_clientes = cadastrar_cliente(cliente, contador_clientes);
 
                         }else{
@@ -135,10 +135,10 @@ int main(){
                             gets(senha);
                             senha_funcionario = id_nome(senha);
 
-                            //Chama função de verificar cadastro funcionario
+                            //Chama funÃ§Ã£o de verificar cadastro funcionario
 
                         }else if(op == 2){
-                            //Chama função de cadastrar funcionarios;
+                            //Chama funÃ§Ã£o de cadastrar funcionarios;
 
                         }else{
                             printf("\n Essa entrada nao eh valida\n");
