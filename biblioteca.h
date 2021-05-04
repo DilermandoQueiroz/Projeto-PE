@@ -38,8 +38,12 @@ void detalhes(struct livros livro[], int contador);
 void catalogo(struct livros livro[], int qtde);
 void estoque(struct livros livro[], int qtde);
 
-int AlugarComprar(struct livros livro[], int contador);
-int Devolver(struct livros livro[], int contador);
+void AlugarComprar(struct livros livro[], int contador, int id, struct clientes cliente[], int contadorcliente);
+void Devolver(struct livros livro[], int contador, int id, struct clientes cliente[], int contadorcliente);
+void EstoqueBaixo(struct livros livro[], int contador);
+void DevolverLivros(struct clientes cliente[], int contador, int id);
+
+
 void troca(char p1[100][20], int palavra);
 void ordenar_livros(struct livros livro[], int qtde);
 char converte_maiuscula(char letra);
