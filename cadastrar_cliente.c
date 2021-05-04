@@ -43,9 +43,14 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
             // armazena a senha ela nao esta segura!!!
             cliente[contador].senha = id_nome(senha);
 
+            //Inicializa os livros_alugados com alguma coisa pra não ficar lixo de memoria
+            for(int i=0; i<20; i++){
+                cliente[contador].livros_alugado[i][0]= '.';
+            }
+
             // incrementa o contador de clientes
             contador++;
-            
+
             // Grava no clientes.bin
             escrever_cliente(cliente, contador);
 
@@ -64,7 +69,7 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
 */
 int verificacao(int id, int senha, struct clientes cliente[], int contador){
     int flag = 0;
-    
+
     // Busca o id do usuario na lista cliente[]
     for(int i = 0; i < contador; i++){
         // verifica se o id é igual
