@@ -3,11 +3,11 @@
 int main(){
 
     int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, tam_atual = 100, contador_clientes = 0, contador_livros = 0,
-    tam_atual_clientes = 100;
+    tam_atual_clientes = 100, id_cliente = 0;
 
     // Abre o arquivo que esta salvo o struct livros
     FILE *arquivo = fopen("./dados/livros.bin", "rb");
-    FILE *arquivo_cliente = fopen("./dados/clientes.bin");
+    FILE *arquivo_cliente = fopen("./dados/clientes.bin", "rb");
 
     // Cria um vetor dinamico de struct livros, definido em biblioteca.h
     struct livros *livro = NULL;
@@ -40,10 +40,11 @@ int main(){
 
         if(aux == 1){
             int login_cliente = 0;
+
             do{
 
                 while(login_cliente != 1){
-                        int op = 0, senha_cliente = 0, id_cliente;
+                        int op = 0, senha_cliente = 0;
                         char usuario[50], senha[50];
 
                         printf("\n Ola, voce ja possui cadastro na nossa biblioteca? \n Digite 1 - Sim \n Digite 2 - Nao\n");
@@ -73,7 +74,7 @@ int main(){
 
                     }
 
-                DevolverLivros(cliente, contador_clientes, id_cliente);
+                //DevolverLivros(cliente, contador_clientes, id_cliente);
 
                 printf("\n Eh muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Ver o nosso catalogo de livros \n Digite 2 - Alugar/Comprar \n Digite 3 - Devolver um livro \n Digite 4 - Avaliar um livro \n Digite 5 - Ver detalhes de um livro \n Digite 6 - Sair da area do cliente\n");
                 scanf("%i", &escolha_cliente);
