@@ -70,6 +70,28 @@ void escrever_cliente(struct clientes cliente[], int contador){
 }
 
 
+/* Escreve um struct funcionarios funcionarios[] em um .bin para ser lido depois
+*/
+void escrever_funcionario(struct funcionarios funcionario[], int contador){
+    FILE *arquivo = fopen("dados/funcionarios.bin", "wb");
+
+    // verifica se aconteceu algum erro com o arquivo
+    if(arquivo == NULL){
+        printf("Aconteceu um erro, tente mais tarde\n");
+        exit(1);
+    }
+
+    // caso contrario escreve os aquivos em um binario
+    // para cada um struct em funcionarios[]
+    for(int i = 0; i < contador; i++){
+        fwrite(&funcioanrio[i], sizeof(struct funcionarios), 1, arquivo);
+    }
+        
+    fclose(arquivo);
+    
+}
+
+
 /* Peguei como ideia do link https://gist.github.com/marcoscastro/842e3a5d2ec5e1bd457b
 */
 int ler_livros(struct livros livro[]){
@@ -133,6 +155,44 @@ int ler_clientes(struct clientes cliente[]){
                 flag = 1;
             }
             // caso ainda possua livro
+            else{
+                cliente[contador] = cliente_aux;
+                contador++;
+            }
+        }
+        // terminado com sucesso
+        fclose(arquivo);
+        return contador;
+    }
+}
+
+
+/* Peguei como ideia do link https://gist.github.com/marcoscastro/842e3a5d2ec5e1bd457b
+*/
+int ler_funcionarios(struct funcionarios funcionario[]){
+    FILE *arquivo = fopen("dados/funcionarios.bin", "rb");
+
+    // verifica se aconteceu algum erro com o arquivo
+    if(arquivo == NULL){
+        printf("Aconteceu um erro, tente mais tarde");
+        exit(1);
+    }
+    // caso nao aconteca nenhum erro
+    else{
+        int contador = 0;
+        int flag = 0;
+
+        // enquanto nao terminar de ler os funcionarios guardados
+        while(flag == 0){
+            struct funcionarios funcionario_aux;
+
+            size_t r = fread(&funcionario_aux, sizeof(struct funcionarios), 1, arquivo);
+
+            // caso termine    
+            if(r < 1){
+                flag = 1;
+            }
+            // caso ainda possua funcionarios
             else{
                 cliente[contador] = cliente_aux;
                 contador++;
