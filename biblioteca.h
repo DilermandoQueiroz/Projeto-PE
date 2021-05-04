@@ -21,6 +21,12 @@ struct clientes{
     int senha;
 };
 
+struct funcionarios{
+    int id;
+    char usuario[50];
+    int senha;
+};
+
 // Feito por Dilermando Queiroz Neto RA: 11201722993
 int adicionar_remover(struct livros livro[], int contador, int tam_atual);
 int cadastrar_cliente(struct clientes cliente[10], int contador);
