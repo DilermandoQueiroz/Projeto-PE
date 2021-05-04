@@ -84,7 +84,7 @@ void escrever_funcionario(struct funcionarios funcionario[], int contador){
     // caso contrario escreve os aquivos em um binario
     // para cada um struct em funcionarios[]
     for(int i = 0; i < contador; i++){
-        fwrite(&funcioanrio[i], sizeof(struct funcionarios), 1, arquivo);
+        fwrite(&funcionario[i], sizeof(struct funcionarios), 1, arquivo);
     }
         
     fclose(arquivo);
@@ -194,7 +194,7 @@ int ler_funcionarios(struct funcionarios funcionario[]){
             }
             // caso ainda possua funcionarios
             else{
-                cliente[contador] = cliente_aux;
+                funcionario[contador] = funcionario_aux;
                 contador++;
             }
         }
