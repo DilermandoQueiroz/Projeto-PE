@@ -2,31 +2,35 @@
 
 int main(){
 
-    int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, tam_atual = 100;
+    int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, tam_atual = 100, contador_clientes = 0, contador_livros = 0,
+    tam_atual_clientes = 100;
 
     // Abre o arquivo que esta salvo o struct livros
     FILE *arquivo = fopen("./dados/livros.bin", "rb");
+    FILE *arquivo_cliente = fopen("./dados/clientes.bin");
 
     // Cria um vetor dinamico de struct livros, definido em biblioteca.h
     struct livros *livro = NULL;
     livro = (struct livros *) malloc(tam_atual*sizeof(struct livros));
 
-    if(livro == NULL){
+    // Cria um vetor dinamica de struct clientes, definido em biblioteca.h
+    struct clientes *cliente = NULL;
+    cliente = (struct clientes *) malloc(tam_atual_clientes*sizeof(struct clientes));
+
+    if(livro == NULL || cliente == NULL){
         printf("Aconteceu um erro, tente mais tarde\n");
     }
-
-    int contador_livros = 0;
 
     // Se o arquivo existir leia os dados contido nele
     if(arquivo != NULL){
         contador_livros = ler_livros(livro);
     }
+    if(arquivo_cliente != NULL){
+        contador_clientes = ler_clientes(cliente);
+    }
 
     fclose(arquivo);
-
-    // Cria um vetor de tamanho 10 para struct clientes
-    struct clientes cliente[10];
-    int contador_clientes = 0;
+    fclose(arquivo_cliente);
 
     while(flag != 2){
 

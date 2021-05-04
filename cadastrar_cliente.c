@@ -7,7 +7,7 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
     int id;
 
     // Recebe o nome da pessoa que esta cadastrando
-    printf("\n Ola seja bem-vindo ao da cadastramento da Biblioteca UFABC \n Voce poderia nos informar seu nome ?\n");
+    printf("\n Ola seja bem-vindo ao cadastramento da Biblioteca UFABC \n Voce poderia nos informar seu nome ?\n");
     fflush(stdin);
     gets(nome);
 
