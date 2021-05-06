@@ -57,7 +57,7 @@ int avaliar(struct livros livro[], int contador){
         cont = cont+1;
     }
 
-    return contador; // Retorna a matriz livros atualizada
+    return contador;
 }
 
 void detalhes(struct livros livro[], int contador){
