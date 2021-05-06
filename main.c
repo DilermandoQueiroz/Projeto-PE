@@ -115,7 +115,7 @@ int main(){
         else if(aux == 2){
             int login_funcionario = 0;
             do{
-                /*
+                
                 while(login_funcionario != 1){
                         int op = 0, senha_funcionario = 0, id_funcionario;
                         char usuario[50], senha[50];
@@ -144,7 +144,7 @@ int main(){
                         }
 
                 }
-                */
+                
 
                 EstoqueBaixo(livro, contador_livros);
 
