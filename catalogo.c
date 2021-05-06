@@ -13,7 +13,7 @@ void catalogo(struct livros livro[], int qtde){
     }
     else{
         ordenar_livros(livro, qtde);
-        best_seller(livro, qtd);
+        best_seller(livro, qtde);
     }
 
     printf("\n----------------------------------------\n");

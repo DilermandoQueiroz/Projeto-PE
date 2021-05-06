@@ -3,19 +3,24 @@
 int main(){
 
     int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, tam_atual = 100, contador_clientes = 0, contador_livros = 0,
-    tam_atual_clientes = 100, id_cliente = 0;
+    tam_atual_clientes = 100, id_cliente = 0, contador_funcionario = 0;
 
     // Abre o arquivo que esta salvo o struct livros
     FILE *arquivo = fopen("./dados/livros.bin", "rb");
     FILE *arquivo_cliente = fopen("./dados/clientes.bin", "rb");
+    FILE *arquivo_funcionario = fopen("./dados/funcionarios.bin", "rb");
 
-    // Cria um vetor dinamico de struct livros, definido em biblioteca.h
+    // Cria um vetor dinamico de struct livros
     struct livros *livro = NULL;
     livro = (struct livros *) malloc(tam_atual*sizeof(struct livros));
 
-    // Cria um vetor dinamica de struct clientes, definido em biblioteca.h
+    // Cria um vetor dinamico de struct clientes
     struct clientes *cliente = NULL;
     cliente = (struct clientes *) malloc(tam_atual_clientes*sizeof(struct clientes));
+
+    // Cria um vetor dinamico de struct funcionarios
+    struct funcionarios *funcionario = NULL;
+    funcionario = (struct funcionarios *) malloc(10*sizeof(struct funcionarios));
 
     if(livro == NULL || cliente == NULL){
         printf("Aconteceu um erro, tente mais tarde\n");
@@ -28,9 +33,13 @@ int main(){
     if(arquivo_cliente != NULL){
         contador_clientes = ler_clientes(cliente);
     }
+    if(arquivo_funcionario != NULL){
+        contador_funcionario = ler_funcionarios(funcionario);
+    }
 
     fclose(arquivo);
     fclose(arquivo_cliente);
+    fclose(arquivo_funcionario);
 
     while(flag != 2){
 
@@ -62,7 +71,7 @@ int main(){
                             senha_cliente = id_nome(senha);
 
                             //Chama função de verificar cadastro
-                            login_cliente = verificacao(id_cliente, senha_cliente, cliente, contador_clientes);
+                            login_cliente = verificacao_cliente(id_cliente, senha_cliente, cliente, contador_clientes);
 
                         }else if(op == 2){
                             //Chama função de cadastrar os clientes;
@@ -115,7 +124,7 @@ int main(){
         else if(aux == 2){
             int login_funcionario = 0;
             do{
-                /*
+                
                 while(login_funcionario != 1){
                         int op = 0, senha_funcionario = 0, id_funcionario;
                         char usuario[50], senha[50];
@@ -134,21 +143,22 @@ int main(){
                             gets(senha);
                             senha_funcionario = id_nome(senha);
 
-                            //Chama função de verificar cadastro funcionario
+                            login_funcionario = verificacao_funcionario(id_funcionario, senha_funcionario, funcionario, contador_funcionario);
 
                         }else if(op == 2){
                             //Chama função de cadastrar funcionarios;
+                            contador_funcionario = cadastrar_funcionarios(funcionario, contador_funcionario);
 
                         }else{
                             printf("\n Essa entrada nao eh valida\n");
                         }
 
                 }
-                */
+                
 
                 EstoqueBaixo(livro, contador_livros);
 
-                printf("\n E muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Cadastrar/Remover um livro \n Digite 2 - Ver o estoque \n Digite 3 - Sair da area do funcionario\n");
+                printf("\n E muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Cadastrar/Remover um livro \n Digite 2 - Ver o estoque \n Digite 3 - Exporta aquivo csv \n Digite 4 - Sair da area do funcionario\n");
                 scanf("%i", &escolha_funcionario);
 
                 if(escolha_funcionario == 1){
@@ -160,6 +170,10 @@ int main(){
                 }
 
                 else if(escolha_funcionario == 3){
+                    exporta_csv(livro, contador_livros);
+                }
+
+                else if(escolha_funcionario == 4){
                     printf("\n Voce saiu da area do funcionario!\n");
                 }
 

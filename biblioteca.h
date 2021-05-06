@@ -34,7 +34,7 @@ void exporta_csv(struct livros livro[], int contador);
 void escrever_livros(struct livros livro[], int contador);
 int ler_livros(struct livros livro[]);
 int id_nome(char nome[100]);
-int verificacao(int id, int senha, struct clientes cliente[], int contador);
+int verificacao_cliente(int id, int senha, struct clientes cliente[], int contador);
 void escrever_cliente(struct clientes cliente[], int contador);
 int ler_clientes(struct clientes cliente[]);
 
@@ -53,5 +53,14 @@ void DevolverLivros(struct clientes cliente[], int contador, int id);
 void troca(char p1[100][20], int palavra);
 void ordenar_livros(struct livros livro[], int qtde);
 char converte_maiuscula(char letra);
+
+// Feito por Thomaz
+int cadastrar_funcionarios(struct funcionarios funcionario[10], int contador);
+int particiona(struct livros livro[], int inicio, int final1);
+void quickSort(struct livros livro[], int inicio, int fim);
+void best_seller(struct livros livro[], int contador);
+int verificacao_funcionario(int id, int senha, struct funcionarios funcionario[], int contador);
+void escrever_funcionario(struct funcionarios funcionario[], int contador);
+int ler_funcionarios(struct funcionarios funcionario[]);
 
 #endif // BIBLIOTECA_H

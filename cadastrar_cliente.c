@@ -67,7 +67,7 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
 * retorna 1 para sim
 * retorna 0 para não
 */
-int verificacao(int id, int senha, struct clientes cliente[], int contador){
+int verificacao_cliente(int id, int senha, struct clientes cliente[], int contador){
     int flag = 0;
 
     // Busca o id do usuario na lista cliente[]

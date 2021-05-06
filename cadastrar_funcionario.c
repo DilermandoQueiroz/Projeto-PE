@@ -1,6 +1,6 @@
-#include<biblioteca.h>
+#include "biblioteca.h"
 
-int cadastrar_funcionarios(struct funcionarios funcionario[10], int contador){
+int cadastrar_funcionarios(struct funcionarios funcionario[], int contador){
     char nome[50], usuario[50];
     int id;
 
@@ -59,7 +59,7 @@ int cadastrar_funcionarios(struct funcionarios funcionario[10], int contador){
 * retorna 1 para sim
 * retorna 0 para não
 */
-int verificacao(int id, int senha, struct funcionarios funcionario[], int contador){
+int verificacao_funcionario(int id, int senha, struct funcionarios funcionario[], int contador){
     int flag = 0;
 
     // Busca o id do usuario na lista funcionario[]
