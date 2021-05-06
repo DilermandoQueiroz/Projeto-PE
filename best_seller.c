@@ -1,11 +1,16 @@
+#include <biblioteca.h>
+
 // Esta funcao recebe o struct com os dados dos livros, os ordena e imprime os 3 mais vendidos.
 
 int particiona(struct livros livro[], int inicio, int final1){
     int esq, dir;
-    struct livros aux, pivo;
+
+    struct livros aux;
+    struct livros pivo;
+
     esq=inicio;
     dir=final1;
-    pivo=livro[inicio];
+    pivo = livro[inicio];
 
     while(esq<dir){
         while(livro[esq].qtd_comprado>=pivo.qtd_comprado){
