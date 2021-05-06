@@ -70,3 +70,8 @@ char converte_maiuscula(char letra){ // converte uma letra maiuscula em minuscul
     }
 
 }
+
+
+void ordenar_melhores(struct livros livro[], int qtde){
+    
+}

@@ -5,6 +5,12 @@ int main(){
     int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, tam_atual = 100, contador_clientes = 0, contador_livros = 0,
     tam_atual_clientes = 100, id_cliente = 0;
 
+    //TEMP  
+    struct servico biblioteca, *p_biblioteca;
+    p_biblioteca = &biblioteca;
+    biblioteca.avaliacao=0;
+    biblioteca.qtd_avaliacoes=0; 
+
     // Abre o arquivo que esta salvo o struct livros
     FILE *arquivo = fopen("./dados/livros.bin", "rb");
     FILE *arquivo_cliente = fopen("./dados/clientes.bin", "rb");
@@ -76,7 +82,7 @@ int main(){
 
                 //DevolverLivros(cliente, contador_clientes, id_cliente);
 
-                printf("\n Eh muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Ver o nosso catalogo de livros \n Digite 2 - Alugar/Comprar \n Digite 3 - Devolver um livro \n Digite 4 - Avaliar um livro \n Digite 5 - Ver detalhes de um livro \n Digite 6 - Sair da area do cliente\n");
+                printf("\n Eh muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Ver o nosso catalogo de livros \n Digite 2 - Alugar/Comprar \n Digite 3 - Devolver um livro \n Digite 4 - Avaliar um livro \n Digite 5 - Ver detalhes de um livro \n Digite 6 - Para avaliar a biblioteca \n Digite 7 - Sair da area do cliente\n");
                 scanf("%i", &escolha_cliente);
 
                 if(escolha_cliente == 1){
@@ -100,6 +106,10 @@ int main(){
                 }
 
                 else if(escolha_cliente == 6){
+                    avaliar_biblioteca(id_cliente, cliente, p_biblioteca, contador_clientes);
+                }
+
+                else if(escolha_cliente == 7){
                     printf("\n Voce saiu da area do cliente!\n");
                 }
 
@@ -107,7 +117,7 @@ int main(){
                     printf("\n Essa entrada nao eh valida!\n");
                 }
 
-            }while(escolha_cliente != 6);
+            }while(escolha_cliente != 7);
 
             escolha_cliente = 0;
         }
@@ -148,7 +158,7 @@ int main(){
 
                 EstoqueBaixo(livro, contador_livros);
 
-                printf("\n E muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Cadastrar/Remover um livro \n Digite 2 - Ver o estoque \n Digite 3 - Sair da area do funcionario\n");
+                printf("\n E muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Cadastrar/Remover um livro \n Digite 2 - Ver o estoque \n Digite 3 - Ver avaliacao da biblioteca \n Digite 4 - Sair da area do funcionario\n");
                 scanf("%i", &escolha_funcionario);
 
                 if(escolha_funcionario == 1){
@@ -160,6 +170,10 @@ int main(){
                 }
 
                 else if(escolha_funcionario == 3){
+                    resultados_biblioteca(p_biblioteca);
+                }
+
+                else if(escolha_funcionario == 4){
                     printf("\n Voce saiu da area do funcionario!\n");
                 }
 
@@ -167,7 +181,7 @@ int main(){
                     printf("\n Essa entrada nao eh valida!\n");
                 }
 
-            }while(escolha_funcionario!=3);
+            }while(escolha_funcionario!=4);
 
             escolha_funcionario = 0;
         }

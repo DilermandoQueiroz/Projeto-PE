@@ -19,12 +19,18 @@ struct clientes{
     char livros_alugado[20][50];
     char usuario[50];
     int senha;
+    int avaliacao_biblioteca;
 };
 
 struct funcionarios{
     int id;
     char usuario[50];
     int senha;
+};
+
+struct servico{
+    int avaliacao;
+    int qtd_avaliacoes;
 };
 
 // Feito por Dilermando Queiroz Neto RA: 11201722993
@@ -53,5 +59,10 @@ void DevolverLivros(struct clientes cliente[], int contador, int id);
 void troca(char p1[100][20], int palavra);
 void ordenar_livros(struct livros livro[], int qtde);
 char converte_maiuscula(char letra);
+void ordenar_melhores(struct livros livro[], int qtde);
+
+int atualizar_media(int alterar, struct servico *biblioteca);
+void avaliar_biblioteca(int id, struct clientes cliente[], struct servico *biblioteca, int contador);
+void resultados_biblioteca(struct servico *biblioteca);
 
 #endif // BIBLIOTECA_H
