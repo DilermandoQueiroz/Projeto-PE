@@ -12,7 +12,19 @@ void catalogo(struct livros livro[], int qtde){
         printf("\n Nenhum livro cadastrado\n");
     }
     else{
-        ordenar_livros(livro, qtde);
+        int escolha;
+        printf("\n Deseja ver o catalogo em qual ordem? \n Digite 1 - ordem alfabetica \n Digite 2 - melhor avaliacao \n");
+        scanf("%i", &escolha);
+
+        if(escolha == 1){
+            ordenar_livros(livro, qtde);
+        }
+
+        else if(escolha == 2){
+            ordenar_melhores(livro, qtde);
+        }
+
+        
     }
 
     printf("\n----------------------------------------\n");

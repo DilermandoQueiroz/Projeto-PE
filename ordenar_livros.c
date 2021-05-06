@@ -99,7 +99,11 @@ void ordenar_melhores(struct livros livro[], int qtde){
             ordenado = 1;
         }
 
-        escrever_livros(livro, qtde);
-
+       
     }while(ordenado != 1);
+
+    for (int i = 0; i < qtde; i++) //imprime os livros ordenados
+    {
+        printf("%s\n", livro[i].nome);
+    }
 }
