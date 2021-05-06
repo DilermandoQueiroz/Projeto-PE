@@ -61,8 +61,8 @@ void ordenar_livros(struct livros livro[], int qtde);
 char converte_maiuscula(char letra);
 void ordenar_melhores(struct livros livro[], int qtde);
 
-int atualizar_media(int alterar, struct servico *biblioteca);
-void avaliar_biblioteca(int id, struct clientes cliente[], struct servico *biblioteca, int contador);
-void resultados_biblioteca(struct servico *biblioteca);
+void atualizar_media(int atual, struct clientes cliente[], int contador);
+void avaliar_biblioteca(int id, struct clientes cliente[], int contador);
+void resultados_biblioteca(struct clientes cliente[], int contador);
 
 #endif // BIBLIOTECA_H

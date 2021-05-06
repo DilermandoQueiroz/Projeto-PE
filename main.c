@@ -5,11 +5,7 @@ int main(){
     int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, tam_atual = 100, contador_clientes = 0, contador_livros = 0,
     tam_atual_clientes = 100, id_cliente = 0;
 
-    //TEMP  
-    struct servico biblioteca, *p_biblioteca;
-    p_biblioteca = &biblioteca;
-    biblioteca.avaliacao=0;
-    biblioteca.qtd_avaliacoes=0; 
+    
 
     // Abre o arquivo que esta salvo o struct livros
     FILE *arquivo = fopen("./dados/livros.bin", "rb");
@@ -106,7 +102,7 @@ int main(){
                 }
 
                 else if(escolha_cliente == 6){
-                    avaliar_biblioteca(id_cliente, cliente, p_biblioteca, contador_clientes);
+                    avaliar_biblioteca(id_cliente, cliente, contador_clientes);
                 }
 
                 else if(escolha_cliente == 7){
@@ -170,7 +166,7 @@ int main(){
                 }
 
                 else if(escolha_funcionario == 3){
-                    resultados_biblioteca(p_biblioteca);
+                    resultados_biblioteca(cliente, contador_clientes);
                 }
 
                 else if(escolha_funcionario == 4){
@@ -202,6 +198,9 @@ int main(){
         }
     }
 
+    escrever_cliente(cliente,contador_clientes);
+    escrever_livros(livro,contador_livros);
+    
     printf("-----------------------------------------------------------------------------------");
 
     return 0;

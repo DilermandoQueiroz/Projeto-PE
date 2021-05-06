@@ -1,15 +1,8 @@
 #include "biblioteca.h"
 
-int atualizar_media(int alterar, struct servico *biblioteca){
-    int nota, feito=0, media=0, n=0;
+void atualizar_media(int atual, struct clientes cliente[], int contador){
+    int nota, feito=0, media=0, n=0, soma=0;
 
-    media = (*biblioteca).avaliacao;
-    n = (*biblioteca).qtd_avaliacoes;
-
-    if(alterar!=0 && n!=0){
-        media = (n*media-alterar)/(n);
-        n--;
-    }
 
     while(feito == 0){
 
@@ -24,7 +17,8 @@ int atualizar_media(int alterar, struct servico *biblioteca){
         else{
 
             feito = 1;
-                    
+            cliente[atual].avaliacao_biblioteca = nota;
+            printf("\n Nota atualizou____________\n");
         }
     }
 
@@ -32,20 +26,24 @@ int atualizar_media(int alterar, struct servico *biblioteca){
     printf("\n Obrigado!\n");
 
     // Atualizar a m�dia do livro
-
+    for (int i = 0; i < contador; i++)
+    {
+        if (cliente[i].avaliacao_biblioteca!=-1)
+        {
+            soma = soma + cliente[i].avaliacao_biblioteca;
+            n++;
+        }
+        
+    }
     
+    media = soma/n;
 
-    media = (n*media+nota)/(n+1);
 
-    (*biblioteca).qtd_avaliacoes = n+1;
-    (*biblioteca).avaliacao = media;
+   printf("\n A biblioteca foi avaliada %i vezes e possui media %i.\n", n, media);
 
-   // printf("\n A biblioteca foi avaliada %i vezes e possui media %i.\n", (*biblioteca).qtd_avaliacoes, (*biblioteca).avaliacao );
-
-    return nota;
 }
 
-void avaliar_biblioteca(int id, struct clientes cliente[], struct servico *biblioteca, int contador){
+void avaliar_biblioteca(int id, struct clientes cliente[], int contador){
     int atual;
 
     // encontrar o indice do cliente atual
@@ -53,14 +51,14 @@ void avaliar_biblioteca(int id, struct clientes cliente[], struct servico *bibli
        
         if(id == cliente[i].id){
             atual = i;
-            //printf("------- %s --------", cliente[atual].usuario);
+            printf("------- %s --------", cliente[atual].usuario);
         }
     }
 
     // saber se nao fez avalicao
     if (cliente[atual].avaliacao_biblioteca == -1)
     {
-        cliente[atual].avaliacao_biblioteca = atualizar_media(0, biblioteca);
+        atualizar_media(atual, cliente, contador);
     }else{
         printf("\n Voce ja avaliou a biblioteca, deseja alterar a avaliacao? \n 1-Sim \n 2-Nao \n");
         int resp;
@@ -68,16 +66,35 @@ void avaliar_biblioteca(int id, struct clientes cliente[], struct servico *bibli
 
         if (resp==1)
         {
-            cliente[atual].avaliacao_biblioteca = atualizar_media(cliente[atual].avaliacao_biblioteca, biblioteca);
+            atualizar_media(atual, cliente, contador);
         }
         
     }
     
-
 }
 
-void resultados_biblioteca(struct servico *biblioteca){
+void resultados_biblioteca(struct clientes cliente[], int contador){
+    int soma=0, n=0, media=0;
 
-    printf("\n A biblioteca foi avaliada %i vezes e possui media %i.\n", (*biblioteca).qtd_avaliacoes, (*biblioteca).avaliacao );
+    for (int i = 0; i < contador; i++)
+    {
+        printf("\n%d _______\n ",cliente[i].avaliacao_biblioteca);
+
+        if (cliente[i].avaliacao_biblioteca!=-1)
+        {
+            soma = soma + cliente[i].avaliacao_biblioteca;
+            n++;
+        }
+        
+    }
+
+    if (n==0)
+    {
+        printf("\n Nao foi feita nenhuma avaliacao \n");
+    }else{
+        media = soma/n;
+        printf("\n A biblioteca foi avaliada %i vezes e possui media %i.\n", n, media);
+    }
+    
 
 }
