@@ -44,7 +44,12 @@ void quickSort(struct livros livro[], int inicio, int fim){
 
 void best_seller(struct livros livro[], int contador){
 
-    quickSort(livro, 0, contador-1);
+    if(contador<3){
+        printf("\nNao existem livros sucifientes para fazer classificacao!\n(Necessario estarem cadastrados no minimo 3 livros)\n");
+    }
+    else{
+        quickSort(livro, 0, contador-1);
 
-    printf("\n  **BEST SELLERS** \n1: %s. \n2: %s. \n3: %s.\n\n", livro[0].nome, livro[1].nome, livro[2].nome);
+        printf("\n\n  **BEST SELLERS** \n1: %s. \n2: %s. \n3: %s.\n\n", livro[0].nome, livro[1].nome, livro[2].nome);
+    }
 }
