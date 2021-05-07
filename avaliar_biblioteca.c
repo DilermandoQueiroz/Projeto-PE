@@ -9,7 +9,7 @@ void atualizar_media(int atual, struct clientes cliente[], int contador){
         printf("\n Entre com a sua avaliacao(0-100):\n");
         scanf("%i", &nota);
 
-        // Verificar se a nota inserida est� no intervalo indicado
+        // Verificar se a nota inserida esta no intervalo indicado
         if(nota<0 || nota>100){
 
             printf("\n Nota invalida!\n");
@@ -17,7 +17,7 @@ void atualizar_media(int atual, struct clientes cliente[], int contador){
         else{
 
             feito = 1;
-            cliente[atual].avaliacao_biblioteca = nota;
+            cliente[atual].avaliacao_biblioteca = nota; // atualiza a nota dada pelo cliente
             
         }
     }
@@ -25,7 +25,7 @@ void atualizar_media(int atual, struct clientes cliente[], int contador){
     
     printf("\n Obrigado!\n");
 
-    // Atualizar a m�dia do livro
+    // Atualizar a media do livro
     for (int i = 0; i < contador; i++)
     {
         if (cliente[i].avaliacao_biblioteca!=-1)
@@ -43,6 +43,7 @@ void atualizar_media(int atual, struct clientes cliente[], int contador){
 
 }
 
+//metodo para avaliar o sistema da biblioteca 
 void avaliar_biblioteca(int id, struct clientes cliente[], int contador){
     int atual;
 
@@ -55,10 +56,10 @@ void avaliar_biblioteca(int id, struct clientes cliente[], int contador){
         }
     }
 
-    // saber se nao fez avalicao
+    // saber se nao fez avalicao. O valor de -1 signifca que ainda não fez aavaliacao
     if (cliente[atual].avaliacao_biblioteca == -1)
     {
-        atualizar_media(atual, cliente, contador);
+        atualizar_media(atual, cliente, contador); //atualiza a media da avaliacao da biblioteca
     }else{
         printf("\n Voce ja avaliou a biblioteca, deseja alterar a avaliacao? \n 1-Sim \n 2-Nao \n");
         int resp;
@@ -66,13 +67,14 @@ void avaliar_biblioteca(int id, struct clientes cliente[], int contador){
 
         if (resp==1)
         {
-            atualizar_media(atual, cliente, contador);
+            atualizar_media(atual, cliente, contador); //atualiza a media da avaliacao da biblioteca
         }
         
     }
     
 }
 
+// metodo para mostrar a avaliacao da biblioteca para os funcionarios
 void resultados_biblioteca(struct clientes cliente[], int contador){
     int soma=0, n=0, media=0;
 

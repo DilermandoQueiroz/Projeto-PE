@@ -1,10 +1,10 @@
 #include "biblioteca.h"
 
-void troca(char p1[100][20], int palavra){ //troca a palavra da posicao [X] com a palavra da posicao [X+1]
-    char temp[20];
-    strcpy(temp, p1[palavra]);
-    strcpy(p1[palavra], p1[palavra+1]);
-    strcpy(p1[palavra+1], temp);
+void troca(struct livros aux[], int palavra){ //troca a palavra da posicao [X] com a palavra da posicao [X+1]
+    char temp[50];
+    strcpy(temp, aux[palavra].nome);
+    strcpy(aux[palavra].nome, aux[palavra+1].nome);
+    strcpy(aux[palavra+1].nome, temp);
 
 }
 
@@ -18,14 +18,12 @@ char converte_maiuscula(char letra){ // converte uma letra maiuscula em minuscul
 }
 
   void ordenar_livros(struct livros livro[], int qtde){
-    char ordenado[qtde][20];  //vetor temporario para receber livros em ordem, sera apagado no fim da funcao
+    struct livros ordenado[qtde];  //struct temporario para receber livros em ordem, sera apagado no fim da funcao
     int count = 0;
 
     for (int i = 0 ; i < qtde; i++)
     {
-        for(int n=0; n<=strlen(livro[i].nome); n++){
-                ordenado[i][n] = livro[i].nome[n];
-        }
+        strcpy(ordenado[i].nome, livro[i].nome );
     }
 
 
@@ -36,22 +34,22 @@ char converte_maiuscula(char letra){ // converte uma letra maiuscula em minuscul
         for (int x = 0; x < qtde-1; x++) //como eh verificado n e n+1, eh necessario -1 para nao comparar com um valor nao determinado
         {
             int comp; //armazena o comprimento da palavra
-            if(strlen(ordenado[x])<strlen(ordenado[x+1])) //verificar a palavra de menor comprimento
+            if(strlen(ordenado[x].nome)<strlen(ordenado[x+1].nome)) //verificar a palavra de menor comprimento
             {
-                comp=strlen(ordenado[x]);
+                comp=strlen(ordenado[x].nome);
             }else
             {
-                comp=strlen(ordenado[x+1]);
+                comp=strlen(ordenado[x+1].nome);
             }
 
             int n=0;
 
-            while (converte_maiuscula(ordenado[x][n])==converte_maiuscula(ordenado[x+1][n]) && n<comp) //muda a posicao do caractere comparado e "n<comp" evita a comparacao com lixo de memoria da menor palavra
+            while (converte_maiuscula(ordenado[x].nome[n])==converte_maiuscula(ordenado[x+1].nome[n]) && n<comp) //muda a posicao do caractere comparado e "n<comp" evita a comparacao com lixo de memoria da menor palavra
                 {
                     n++;
                 }
 
-            if (converte_maiuscula(ordenado[x][n]) >converte_maiuscula(ordenado[x+1][n]) ) // troca a palavra [x] com a [x+1] se o caractere de mesma posicao for maior.
+            if (converte_maiuscula(ordenado[x].nome[n]) >converte_maiuscula(ordenado[x+1].nome[n]) ) // troca a palavra [x] com a [x+1] se o caractere de mesma posicao for maior.
             {
                 troca(ordenado,x);
 
@@ -66,7 +64,7 @@ char converte_maiuscula(char letra){ // converte uma letra maiuscula em minuscul
 
     for (int i = 0; i < qtde; i++) //imprime os livros ordenados
     {
-        printf("%s\n", ordenado[i]);
+        printf("%s\n", ordenado[i].nome);
     }
 
 }

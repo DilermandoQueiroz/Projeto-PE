@@ -3,3 +3,5 @@ dados/livros.bin
 dados/clientes.bin
 dados/.DS_Store
 a.out
+dados/livros.csv
+dados/funcionarios.bin
