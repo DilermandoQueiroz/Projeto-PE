@@ -1,11 +1,11 @@
 #include "biblioteca.h"
 
-//Funcao para avisar o funcionario que os estoque de um livro est� baixo
+//Funcao para avisar o funcionario que os estoque de um livro esta baixo
 void EstoqueBaixo(struct livros livros[], int contador){
 
     int qtd=0, num=0;;
 
-    //Verifica a quantidade de livros com menos de 5 unidades no estoque
+    //Verifica a quantidade de livros com menos de 6 unidades no estoque
     for(int i=0; i < contador ;i++){
         if(livros[i].qtd_estoque <= 5){
             qtd++;
@@ -16,7 +16,7 @@ void EstoqueBaixo(struct livros livros[], int contador){
     struct livros *livrotemp = NULL;
     livrotemp = (struct livros *) calloc(qtd,sizeof(struct livros));
 
-    //Verifica se aloca��o deu certo
+    //Verifica se alocacao deu certo
     if(livrotemp == NULL){
         printf("Erro, memoria insuficiente.\n");
 
@@ -33,7 +33,7 @@ void EstoqueBaixo(struct livros livros[], int contador){
 
         }
 
-        //Imprime os livros que est�o na struct temporaria
+        //Imprime os livros que estao na struct temporaria
         if(qtd>0){
             printf("\n------------------------ ! Aviso ! ------------------------\n \n");
             printf("Os seguintes livros estao com baixa quantidade em estoque.\n");

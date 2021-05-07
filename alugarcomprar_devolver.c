@@ -142,6 +142,7 @@ void Devolver(struct livros livro[], int contador, int id, struct clientes clien
                         for(int k=j; k < 20; k++){
                             strcpy(cliente[i].livros_alugado[k], cliente[i].livros_alugado[k+1]);
                         }
+                        cliente[i].livros_alugado[19][0] = '.';
 
                     }
                 }
