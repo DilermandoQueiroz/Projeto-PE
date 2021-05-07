@@ -100,10 +100,10 @@ void estoque(struct livros livro[], int qtde){
             else{
                 int indices_ordenados[qtde];
 
-                printf("\nDeseja ver o estoque em qual ordem? \n 1- Crescente\n 2- Decrescente\n 3- Sair desta sessao do estoque\n 4- Sair do estoque\n");
-                scanf("%i", &escolha_ordem);
-
                 do{
+                    printf("\nDeseja ver o estoque em qual ordem? \n 1- Crescente\n 2- Decrescente\n 3- Sair desta sessao do estoque\n 4- Sair do estoque\n");
+                    scanf("%i", &escolha_ordem);
+
                     if(escolha_ordem == 1){
                         OrganizaEstoqueCrescente(livro, qtde);
                     }

@@ -3,35 +3,50 @@
 void catalogo(struct livros livro[], int qtde){
     int interesse = 0;
 
-    printf("\n----------------------------------------\n");
-    printf("\n Catalogo Biblioteca UFABC: \n");
-
-    //add opcao do cliente ver o catalogo por ordem de avaliacao e qtd de vendas
-
     if(qtde == 0){
         printf("\n Nenhum livro cadastrado\n");
     }
     else{
         int escolha;
-        printf("\n Deseja ver o catalogo em qual ordem? \n Digite 1 - ordem alfabetica \n Digite 2 - melhor avaliacao \n Digite 3 - mais vendidos \n");
-        scanf("%i", &escolha);
 
-        if(escolha == 1){
-            ordenar_livros(livro, qtde);
-        }
+        do{
+            printf("\n Deseja ver o catalogo em qual ordem? \n Digite 1 - ordem alfabetica \n Digite 2 - melhor avaliacao \n Digite 3 - mais vendidos \n");
+            scanf("%i", &escolha);
 
-        else if(escolha == 2){
-            ordenar_melhores(livro, qtde);
-        }
+            if(escolha == 1){
+                printf("\n----------------------------------------\n");
+                printf("\n Catalogo Biblioteca UFABC: \n");
 
-        else if(escolha == 3){
-            best_seller(livro, qtde);
-        }
+                ordenar_livros(livro, qtde);
 
-        
+                printf("\n----------------------------------------\n");
+            }
+
+            else if(escolha == 2){
+                printf("\n----------------------------------------\n");
+                printf("\n Catalogo Biblioteca UFABC: \n");
+
+                ordenar_melhores(livro, qtde);
+
+                printf("\n----------------------------------------\n");
+            }
+
+            else if(escolha == 3){
+                printf("\n----------------------------------------\n");
+                printf("\n Catalogo Biblioteca UFABC: \n");
+
+                best_seller(livro, qtde);
+
+                printf("\n----------------------------------------\n");
+            }
+
+            else{
+                printf("\n Insira uma opcao valida!\n");
+            }
+
+        }while(escolha!= 1 && escolha!= 2 && escolha!= 3);
+
     }
-
-    printf("\n----------------------------------------\n");
 
     do{
         printf("\n Gostaria de saber mais detalhes de algum livro? \n Digite 1 - Sim \n Digite 2 - Nao\n");
