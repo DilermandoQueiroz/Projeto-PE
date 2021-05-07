@@ -18,7 +18,7 @@ void atualizar_media(int atual, struct clientes cliente[], int contador){
 
             feito = 1;
             cliente[atual].avaliacao_biblioteca = nota;
-            printf("\n Nota atualizou____________\n");
+            
         }
     }
 
@@ -39,7 +39,7 @@ void atualizar_media(int atual, struct clientes cliente[], int contador){
     media = soma/n;
 
 
-   printf("\n A biblioteca foi avaliada %i vezes e possui media %i.\n", n, media);
+   
 
 }
 
@@ -51,7 +51,7 @@ void avaliar_biblioteca(int id, struct clientes cliente[], int contador){
        
         if(id == cliente[i].id){
             atual = i;
-            printf("------- %s --------", cliente[atual].usuario);
+            
         }
     }
 
@@ -78,7 +78,7 @@ void resultados_biblioteca(struct clientes cliente[], int contador){
 
     for (int i = 0; i < contador; i++)
     {
-        printf("\n%d _______\n ",cliente[i].avaliacao_biblioteca);
+        
 
         if (cliente[i].avaliacao_biblioteca!=-1)
         {
