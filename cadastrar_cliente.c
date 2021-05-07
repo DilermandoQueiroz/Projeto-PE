@@ -17,7 +17,7 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
 
     while(flag!=1){
 
-        printf("\n Ola %s, isira seu nome de usuario\n", nome);
+        printf("\n Ola %s, insira seu nome de usuario\n", nome);
         gets(usuario);
         id = id_nome(usuario);
 
@@ -34,16 +34,16 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
             cliente[contador].id = id;
             strcpy(cliente[contador].usuario, usuario);
 
-            // Cadastra a senha, podemos usar a biblioteca #include <openssl/md5.h> para criptografa a senha
+            // Cadastra a senha
             char senha[50];
             printf("\n Insira uma senha \n");
             fflush(stdin);
             gets(senha);
 
-            // armazena a senha ela nao esta segura!!!
+            // armazena a senha
             cliente[contador].senha = id_nome(senha);
 
-            //Inicializa os livros_alugados com alguma coisa pra n√£o ficar lixo de memoria
+            //Inicializa os livros_alugados com alguma coisa pra n„o ficar lixo de memoria
             for(int i=0; i<20; i++){
                 cliente[contador].livros_alugado[i][0]= '.';
             }
@@ -68,16 +68,16 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
 
 /* Verifica se a pessoa esta cadastrada na BIBLIOTECA
 * retorna 1 para sim
-* retorna 0 para n√£o
+* retorna 0 para n„o
 */
 int verificacao_cliente(int id, int senha, struct clientes cliente[], int contador){
     int flag = 0;
 
     // Busca o id do usuario na lista cliente[]
     for(int i = 0; i < contador; i++){
-        // verifica se o id √© igual
+        // verifica se o id È igual
         if(cliente[i].id == id){
-            // verifica se a senha √© igual
+            // verifica se a senha È igual
             if(cliente[i].senha == senha){
                 // esta tudo certo !
                 flag = 1;

@@ -5,7 +5,7 @@ int main(){
     int aux = -1, flag = 0, escolha_cliente = 0, escolha_funcionario = 0, tam_atual = 100, contador_clientes = 0, contador_livros = 0,
     tam_atual_clientes = 100, id_cliente = 0, contador_funcionario = 0;
 
-    
+
 
     // Abre o arquivo que esta salvo o struct livros
     FILE *arquivo = fopen("./dados/livros.bin", "rb");
@@ -72,11 +72,11 @@ int main(){
                             gets(senha);
                             senha_cliente = id_nome(senha);
 
-                            //Chama funÃ§Ã£o de verificar cadastro
+                            //Chama função de verificar cadastro
                             login_cliente = verificacao_cliente(id_cliente, senha_cliente, cliente, contador_clientes);
 
                         }else if(op == 2){
-                            //Chama funÃ§Ã£o de cadastrar os clientes;
+                            //Chama função de cadastrar os clientes;
                             contador_clientes = cadastrar_cliente(cliente, contador_clientes);
 
                         }else{
@@ -85,7 +85,7 @@ int main(){
 
                     }
 
-                //DevolverLivros(cliente, contador_clientes, id_cliente);
+                DevolverLivros(cliente, contador_clientes, id_cliente);
 
                 printf("\n Eh muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Ver o nosso catalogo de livros \n Digite 2 - Alugar/Comprar \n Digite 3 - Devolver um livro \n Digite 4 - Avaliar um livro \n Digite 5 - Ver detalhes de um livro \n Digite 6 - Para avaliar a biblioteca \n Digite 7 - Sair da area do cliente\n");
                 scanf("%i", &escolha_cliente);
@@ -130,7 +130,7 @@ int main(){
         else if(aux == 2){
             int login_funcionario = 0;
             do{
-                
+
                 while(login_funcionario != 1){
                         int op = 0, senha_funcionario = 0, id_funcionario;
                         char usuario[50], senha[50];
@@ -152,7 +152,7 @@ int main(){
                             login_funcionario = verificacao_funcionario(id_funcionario, senha_funcionario, funcionario, contador_funcionario);
 
                         }else if(op == 2){
-                            //Chama funÃ§Ã£o de cadastrar funcionarios;
+                            //Chama função de cadastrar funcionarios;
                             contador_funcionario = cadastrar_funcionarios(funcionario, contador_funcionario);
 
                         }else{
@@ -160,11 +160,11 @@ int main(){
                         }
 
                 }
-                
+
 
                 EstoqueBaixo(livro, contador_livros);
 
-                printf("\n E muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Cadastrar/Remover um livro \n Digite 2 - Ver o estoque \n Digite 3 - Exporta aquivo csv \n Digite 4 - Ver avaliacao da biblioteca \n Digite 5 - Sair da area do funcionario\n");
+                printf("\n E muito bom te-lo conosco! O que voce deseja? \n Digite 1 - Cadastrar/Remover um livro \n Digite 2 - Ver o estoque \n Digite 3 - Exporta arquivo csv \n Digite 4 - Ver avaliacao da biblioteca \n Digite 5 - Sair da area do funcionario\n");
                 scanf("%i", &escolha_funcionario);
 
                 if(escolha_funcionario == 1){
@@ -214,7 +214,7 @@ int main(){
 
     escrever_cliente(cliente,contador_clientes);
     escrever_livros(livro,contador_livros);
-    
+
     printf("-----------------------------------------------------------------------------------");
 
     return 0;
