@@ -17,10 +17,11 @@ int cadastrar_funcionarios(struct funcionarios funcionario[], int contador){
         printf("\n Ola %s, Insira seu nome de usuario\n", nome);
         gets(usuario);
         id = id_nome(usuario);
+        existe=0;
 
         // Verifica se aquele usuario ja esta cadastrado
         for(int i=0; i<contador; i++){
-            if(funcionario[i].usuario == usuario){
+            if(!strcmp (funcionario[i].usuario,usuario)){
                 existe = 1;
             }
         }
@@ -37,7 +38,6 @@ int cadastrar_funcionarios(struct funcionarios funcionario[], int contador){
             fflush(stdin);
             gets(senha);
 
-            // armazena a senha
             funcionario[contador].senha = id_nome(senha);
 
             // incrementa o contador de funcionarios
