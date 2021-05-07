@@ -176,7 +176,7 @@ int main(){
                 }
 
                 else if(escolha_funcionario == 3){
-                    resultados_biblioteca(cliente, contador_clientes);
+                    exporta_csv(livro, contador_livros);
                 }
 
                 else if(escolha_funcionario == 4){
