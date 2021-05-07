@@ -70,3 +70,40 @@ char converte_maiuscula(char letra){ // converte uma letra maiuscula em minuscul
     }
 
 }
+
+
+void ordenar_melhores(struct livros livro[], int qtde){
+    int maior = livro[0].avaliacao, posMaior = 0, ordenado = 0, mudanca = 0, j = 0;
+    struct livros livro_aux;
+
+    do{
+        for(int i= j+1; i<qtde; i++){
+            if(livro[i].avaliacao > maior){
+                maior = livro[i].avaliacao;
+                posMaior = i;
+                mudanca = 1;
+            }
+        }
+
+        if(mudanca == 1){
+            livro_aux = livro[posMaior];
+            livro[posMaior] = livro[j];
+            livro[j] = livro_aux;
+        }
+
+        j++;
+        maior = livro[j].avaliacao;
+        mudanca = 0;
+
+        if(j == qtde-1){
+            ordenado = 1;
+        }
+
+       
+    }while(ordenado != 1);
+
+    for (int i = 0; i < qtde; i++) //imprime os livros ordenados
+    {
+        printf("%s\n", livro[i].nome);
+    }
+}

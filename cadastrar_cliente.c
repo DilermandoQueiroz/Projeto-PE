@@ -48,6 +48,9 @@ int cadastrar_cliente(struct clientes cliente[10], int contador){
                 cliente[contador].livros_alugado[i][0]= '.';
             }
 
+            //inicia o valor de avaliacao igual a -1 para saber se a pessoa nao avaliou a plataforma
+            cliente[contador].avaliacao_biblioteca=-1;
+
             // incrementa o contador de clientes
             contador++;
 
