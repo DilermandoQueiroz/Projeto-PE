@@ -20,8 +20,9 @@ int cadastrar_funcionarios(struct funcionarios funcionario[], int contador){
 
         // Verifica se aquele usuario ja esta cadastrado
         for(int i=0; i<contador; i++){
-            if(funcionario[i].usuario == usuario){
+            if(!strcmp (funcionario[i].usuario,usuario){
                 existe = 1;
+                printf("\nNome de usuario indisponivel.\n");
             }
         }
 
