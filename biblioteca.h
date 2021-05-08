@@ -28,10 +28,7 @@ struct funcionarios{
     int senha;
 };
 
-struct servico{
-    int avaliacao;
-    int qtd_avaliacoes;
-};
+
 
 // Feito por Dilermando Queiroz Neto RA: 11201722993
 int adicionar_remover(struct livros livro[], int contador, int tam_atual);
@@ -56,7 +53,7 @@ void EstoqueBaixo(struct livros livro[], int contador);
 void DevolverLivros(struct clientes cliente[], int contador, int id);
 
 
-void troca(char p1[100][20], int palavra);
+void troca(struct livros aux[], int palavra);
 void ordenar_livros(struct livros livro[], int qtde);
 char converte_maiuscula(char letra);
 void ordenar_melhores(struct livros livro[], int qtde);
